@@ -1,7 +1,30 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 
 const RegisterationHome = () => {
+
+  const navigate = useNavigate();
+  const [firstname, setFirstName] = useState('');
+  const [lastname, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [country, setCountry] = useState('');
+  const [mobile, setMobile] = useState('');
+  const [cc, setCC] = useState('');
+  const [mc, setMC] = useState('');
+  const [password, setPassword] = useState('');
+  const [repassword, setRePassword] = useState('');
+
+  const handleRegister = (e) => {
+    let data = {
+      firstname,
+      lastname,
+      email,
+      country,
+      mobile:`${mc}${mobile}`
+    }
+
+    navigate('/login')
+  }
   return (
     <>
       <section className="py-5">
@@ -11,36 +34,73 @@ const RegisterationHome = () => {
               <div className="card">
                 <div className="card-body p-3 p-md-5">
                   <Link to="/" className="text-center d-block mb-3 mb-sm-4 auth-page-logo">
-                    <img src="/img/logog.png" alt="logo" /> 
+                    <img src="/img/logog.png" alt="logo" />
                   </Link>
-                  <form className="verify-gcaptcha account-form">
+                  <form className="verify-gcaptcha account-form" onSubmit={handleRegister}>
                     <input type="hidden" name="_token" value="i0O64BYKigXcwBjLJG8tTEX1NnLS3ClnmgLC1LjH" />
                     <div className="mb-4">
                       <h4 className="mb-2">Create an Account</h4>
                       <p>You can create account using email or username and the registration is fully free</p>
                     </div>
                     <div className="row">
-                      <div className="col-md-12">
+                      <div className="col-md-6">
                         <div className="form-group">
-                          <label className="form-label">Username</label>
-                          <input type="text" className="form-control form--control checkUser h-45" name="username" value="" required />
+                          <label className="form-label">Firstname</label>
+                          <input
+                            type="text"
+                            className="form-control form--control checkUser h-45"
+                            name="firstname"
+                            value={firstname}
+                            onChange={(e) => setFirstName(e.target.value)}
+                            required />
+                          <small className="text-danger usernameExist"></small>
+                        </div>
+                      </div>
+                      <div className="col-md-6">
+                        <div className="form-group">
+                          <label className="form-label">Lastname</label>
+                          <input
+                            type="text"
+                            className="form-control form--control checkUser h-45"
+                            name="lastname"
+                            value={lastname}
+                            onChange={(e) => setLastName(e.target.value)}
+                            required />
                           <small className="text-danger usernameExist"></small>
                         </div>
                       </div>
                       <div className="col-md-12">
                         <div className="form-group">
                           <label className="form-label">E-Mail Address</label>
-                          <input type="email" className="form-control form--control h-45 checkUser" name="email" value="" required />
+                          <input
+                            type="email"
+                            className="form-control form--control h-45 checkUser"
+                            name="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required />
                         </div>
                       </div>
                       <div className="col-md-6">
                         <div className="form-group">
                           <label className="form-label">Country</label>
-                          <select name="country" className="form--control form-select">
+                          <select 
+                            name="country" 
+                            className="form--control form-select"
+                            value={country}
+                            onChange={(e) => {
+                              // console.log(e.target.selectedOptions[0].dataset.mobile_code)
+                              setMC(e.target.selectedOptions[0].dataset.mobile_code)
+                              setCC(e.target.selectedOptions[0].dataset.code)
+                              setCountry(e.target.value)
+                            }}
+                          >
                             <option data-mobile_code="93" value="Afghanistan" data-code="AF">
-                              Afghanistan</option>
+                              Afghanistan
+                            </option>
                             <option data-mobile_code="358" value="Aland Islands" data-code="AX">
-                              Aland Islands</option>
+                              Aland Islands
+                            </option>
                             <option data-mobile_code="355" value="Albania" data-code="AL">
                               Albania</option>
                             <option data-mobile_code="213" value="Algeria" data-code="DZ">
@@ -529,11 +589,16 @@ const RegisterationHome = () => {
                           <label className="form-label">Mobile</label>
                           <div className="input-group ">
                             <span className="input-group-text mobile-code">
-
+                              +{mc}
                             </span>
-                            <input type="hidden" name="mobile_code" />
-                            <input type="hidden" name="country_code" />
-                            <input type="number" name="mobile" value="" className="form-control form--control checkUser" required />
+                            <input 
+                              type="number" 
+                              name="mobile" 
+                              value={mobile}
+                              onChange={(e) => setMobile(e.target.value)} 
+                              className="form-control form--control checkUser" 
+                              required 
+                            />
                           </div>
                           <small className="text-danger mobileExist"></small>
                         </div>
@@ -541,27 +606,26 @@ const RegisterationHome = () => {
                       <div className="col-12">
                         <div className="form-group">
                           <label className="form-label">Password</label>
-                          <input type="password" className="form-control form--control h-45" name="password" required />
+                          <input 
+                            type="password" 
+                            className="form-control form--control h-45" 
+                            name="password" 
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required 
+                            />
                         </div>
                       </div>
                       <div className="col-12">
                         <div className="form-group">
                           <label className="form-label">Confirm Password</label>
-                          <input type="password" className="form-control form--control h-45" name="password_confirmation" required />
+                          <input type="password" className="form-control form--control h-45" name="password_confirmation" value={repassword}
+                            onChange={(e) => setRePassword(e.target.value)} required />
                         </div>
                       </div>
                       <div className="col-12">
-                      </div>
+                      </div><br />
                       <div className="col-12">
-                        <div className="d-flex flex-wrap gap-2 justify-content-between">
-                          <div className="form-group custom--checkbox">
-                            <input type="checkbox" id="agree" name="agree" className="form-check-input" required />
-                            <label for="agree">I agree with our Terms </label>
-                          </div>
-                        </div>
-                      </div><br/>
-                      <div className="col-12">
-
                         <button type="submit" className="btn btn-primary w-100">Create Account</button>
                       </div>
                       <div className="col-12 mt-4">
