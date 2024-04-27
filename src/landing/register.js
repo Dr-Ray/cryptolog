@@ -11,9 +11,9 @@ const RegisterationHome = () => {
               <div className="card">
                 <div className="card-body p-3 p-md-5">
                   <Link to="/" className="text-center d-block mb-3 mb-sm-4 auth-page-logo">
-                    <img src="/assets/images/logoIcon/logo_2.png" alt="logo" />
+                    <img src="/img/logog.png" alt="logo" /> 
                   </Link>
-                  <form action="/register" method="POST" className="verify-gcaptcha account-form">
+                  <form className="verify-gcaptcha account-form">
                     <input type="hidden" name="_token" value="i0O64BYKigXcwBjLJG8tTEX1NnLS3ClnmgLC1LjH" />
                     <div className="mb-4">
                       <h4 className="mb-2">Create an Account</h4>

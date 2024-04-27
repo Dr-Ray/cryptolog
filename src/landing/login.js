@@ -1,7 +1,19 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
+import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../context';
 
 const Login = () => {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const {setIsloggedIn} = useContext(AuthContext)
+
+  const handleSubmit = (e) => {
+    setIsloggedIn(true);
+    navigate('/user')
+  }
   return (
     <>
       <section className="py-5">
@@ -13,7 +25,7 @@ const Login = () => {
                 <Link to="/" className="text-center d-block mb-3 mb-sm-4 auth-page-logo">
                   <img src="/img/logog.png" alt="logo" />
                 </Link>
-                <form action="/login" method="POST" className="verify-gcaptcha account-form">
+                <form className="verify-gcaptcha account-form" onSubmit={handleSubmit}>
                   <input type="hidden" name="_token" value="i0O64BYKigXcwBjLJG8tTEX1NnLS3ClnmgLC1LjH" />
                   <div className="mb-4">
                     <h4 className="mb-2">Login to your account</h4>
@@ -22,14 +34,30 @@ const Login = () => {
                   <div className="row">
                     <div className="col-12">
                       <div className="form-group">
-                        <label>Username or Email</label>
-                        <input type="text" name="username" className="form-control form--control h-45" />
+                        <label>Email</label>
+                        <input 
+                          type="email" 
+                          name="username" 
+                          className="form-control form--control h-45"
+                          placeholder="type your email..." 
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          required
+                        />
                       </div>
                     </div>
                     <div className="col-12">
                       <div className="form-group">
                         <label>Password</label>
-                        <input type="password" name="password" className="form-control form--control h-45" />
+                        <input 
+                          type="password" 
+                          name="password" 
+                          className="form-control form--control h-45" 
+                          placeholder="type your password..."
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                          required
+                        />
                       </div>
                     </div>
                     <div className="col-12">

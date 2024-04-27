@@ -59,7 +59,7 @@ import StockTradingLanding from './landing/stockstrading';
 function App() {
 	const [theme, setTheme] = useState('light');
 	const [currentUser, setCurrentUser] = useState(null);
-	const [isLoggedIn, setIsloggedIn] = useState(true)
+	const [isLoggedIn, setIsloggedIn] = useState(false)
 
 	return (
 		<ThemeContext.Provider value={{ theme, setTheme }}>

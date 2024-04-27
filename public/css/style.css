@@ -7125,7 +7125,7 @@ fieldset:disabled .btn {
     position: absolute;
     right: 15%;
     bottom: 1.25rem;
-    left: 15%;
+    left: 5%;
     padding-top: 1.25rem;
     padding-bottom: 1.25rem;
     color: #fff;
@@ -24379,7 +24379,7 @@ readers do not read off random characters that represent icons */
     top: 15%;
     right: 0;
     bottom: 0;
-    left: 0;
+    left: 5%;
     color: #333333;
     text-align: left;
     padding: 0 10px;
