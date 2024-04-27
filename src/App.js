@@ -59,10 +59,7 @@ import StockTradingLanding from './landing/stockstrading';
 function App() {
 	const [theme, setTheme] = useState('light');
 	const [currentUser, setCurrentUser] = useState(null);
-	const [isLoggedIn, setIsloggedIn] = useState(false)
-
-	
-
+	const [isLoggedIn, setIsloggedIn] = useState(true)
 
 	return (
 		<ThemeContext.Provider value={{ theme, setTheme }}>
@@ -71,20 +68,20 @@ function App() {
 					<Routes>
 						<Route path="/" element={<Layout />}>
 							<Route index element={<HomeLanding />} />
-							<Route path="about" element={<AboutLanding />} />
-							<Route path="market" element={<MarketsLanding />} />
-							<Route path="education" element={<Education />} />
-							<Route path="terms" element={<TermsLanding />} />
-							<Route path="contact" element={<ContactUs />} />
-							<Route path="customers" element={<CustomersLanding />} />
-							<Route path="register" element={<RegisterationHome />} />
-							<Route path="login" element={<Login />} />
+							<Route path="/about/" element={<AboutLanding />} />
+							<Route path="/market/" element={<MarketsLanding />} />
+							<Route path="/education/" element={<Education />} />
+							<Route path="/terms/" element={<TermsLanding />} />
+							<Route path="/contact/" element={<ContactUs />} />
+							<Route path="/customers/" element={<CustomersLanding />} />
+							<Route path="/register/" element={<RegisterationHome />} />
+							<Route path="/login/" element={<Login />} />
 							<Route path="*" element={<Nopage />} />
-							<Route path='forgot-password' element={<ForgotPasswordHome />} />
-							<Route path="forextrading" element={<ForexTrading />} />
-							<Route path="cryptotrading" element={<CryptoTradingLanding />} />
-							<Route path="copytrading" element={<CopyTradingLanding />} />
-							<Route path="stockstrading" element={<StockTradingLanding />} />
+							<Route path='/forgot-password/' element={<ForgotPasswordHome />} />
+							<Route path="/forextrading/" element={<ForexTrading />} />
+							<Route path="/cryptotrading/" element={<CryptoTradingLanding />} />
+							<Route path="/copytrading/" element={<CopyTradingLanding />} />
+							<Route path="/stockstrading/" element={<StockTradingLanding />} />
 						</Route>
 						<Route path="/user" element={<HomePageLayout />}>
 							<Route index element={<HomeDashboard />} />

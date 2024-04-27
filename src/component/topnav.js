@@ -16,7 +16,7 @@ const TopNav = () => {
                                     <span className="material-icons notranslate">menu</span>
                                 </Link>
                             </li>
-                            <li><Link to="/user"><b>CryptoLogia</b></Link></li>
+                            <li><Link to="/user"><b>SignalBlaze</b></Link></li>
                         </ul>
                         <ul className="right">
                             <li className="hide-on-med-and-down">Ray Adolph</li>

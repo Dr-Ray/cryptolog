@@ -34,7 +34,7 @@ const CryptoTradingLanding = () => {
                                         <div className="card">
                                             <div className="card-body p-3 p-md-5">
                                                 <p>
-                                                    CryptoLogia is excited to announce the launch of our new cryptocurrency trading platform.
+                                                    SignalBlaze is excited to announce the launch of our new cryptocurrency trading platform.
                                                     Now you can start trading Bitcoin, Ethereum and many more cryptocurrencies quickly,
                                                     easily and safely from wherever you are — in just seconds.
                                                     You get great margin trading leverage and short sell options with fast deposits and withdrawals.
@@ -53,7 +53,7 @@ const CryptoTradingLanding = () => {
                                                 </p>
                                                 <div className="card bg-light border-0 mt-4 mb-1">
                                                     <div className="card-body px-2 py-1">
-                                                        <small>For more information please contact <Link className="link-primary text-decoration-none" to="mailto:">info@cexafm.com</Link></small>
+                                                        <small>For more information please contact <Link className="link-primary text-decoration-none" to="mailto:">info@signalblaze.com</Link></small>
                                                     </div>
                                                 </div>
                                             </div>

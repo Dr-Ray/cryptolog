@@ -77,12 +77,12 @@ const CustomersLanding = () => {
                         <div className="card-body">
                             <img className="position-absolute bottom-0 end-0" src="img/blockit/palm.png" alt="client-testimoni" width="200"/>
                             <blockquote className="blockquote text-muted">
-                                <p>For the past three years, I have worked with CexAffiliate. The service I got feels highly great. The comfort I experience from knowing that our money is being so wisely managed is immeasurable. Thank you always!</p>
+                                <p>For the past three years, I have worked with SignalBlaze. The service I got feels highly great. The comfort I experience from knowing that our money is being so wisely managed is immeasurable. Thank you always!</p>
                             </blockquote>
                             <div className="mt-4">
                                 <img className="mb-2" src="img/favicon.ico" alt="client-logo" width="62" height="62"/>
                                 <h6 className="mb-0">Lauren Peterson</h6>
-                                <span className="blockquote-footer">Daytrader at CexAffiliate</span>
+                                <span className="blockquote-footer">Daytrader at SignalBlaze</span>
                             </div>
                         </div>
                     </div>
@@ -92,12 +92,12 @@ const CustomersLanding = () => {
                         <div className="card-body">
                             <img className="position-absolute bottom-0 end-0" src="img/blockit/palm.png" alt="client-testimoni" width="200"/>
                             <blockquote className="blockquote text-muted">
-                                <p>This is not thesame with other investment platforms that I have used previously. I would encourage anybody to get in here at CexAffiliate if they truly want to grow and improve their investment portfolio.</p>
+                                <p>This is not thesame with other investment platforms that I have used previously. I would encourage anybody to get in here at SignalBlaze if they truly want to grow and improve their investment portfolio.</p>
                             </blockquote>
                             <div className="mt-4">
                                 <img className="mb-2" src="img/favicon.ico" alt="client-logo" width="62" height="62"/>
                                 <h6 className="mb-0">Davies Robert</h6>
-                                <span className="blockquote-footer">Trader at CexAffiliate</span>
+                                <span className="blockquote-footer">Trader at SignalBlaze</span>
                             </div>
                         </div>
                     </div>
@@ -113,10 +113,10 @@ const CustomersLanding = () => {
                         <div className="card-body">
                             <img src="img/favicon.ico" alt="client-logo" width="64" height="64"/>
                             <blockquote className="blockquote text-muted my-4">
-                                <p>Since making an investment with CexAffiliate, I'm provided with the stability and a sense of confidence in the lifestyle I can enjoy. I have quickly noticed growth in my investment portfolio, which is a reassuring sign. I truly recommend.</p>
+                                <p>Since making an investment with SignalBlaze, I'm provided with the stability and a sense of confidence in the lifestyle I can enjoy. I have quickly noticed growth in my investment portfolio, which is a reassuring sign. I truly recommend.</p>
                             </blockquote>
                             <h6 className="mb-0">Jakes Terrence</h6>
-                            <span className="blockquote-footer">Trader at CexAffiliate</span>
+                            <span className="blockquote-footer">Trader at SignalBlaze</span>
                         </div>
                     </div>
                 </div>
@@ -128,7 +128,7 @@ const CustomersLanding = () => {
                                 <p>I have used many platforms but this is straightforward and has improved my investment boundlessly. If you are reluctant about joining, attempt it for a month and you will perceive how smooth it is. Great platform!</p>
                             </blockquote>
                             <h6 className="mb-0">Alison Jeremy</h6>
-                            <span className="blockquote-footer">Trader at CexAffiliate</span>
+                            <span className="blockquote-footer">Trader at SignalBlaze</span>
                         </div>
                     </div>
                 </div>
@@ -140,7 +140,7 @@ const CustomersLanding = () => {
                                 <p>Your administration isn't just giving productive investment ideas, but showing me how to examine markets. I appreciate that, and your itemized answers to my inquiries is a Yes Yes!</p>
                             </blockquote>
                             <h6 className="mb-0">Lisa Franklin</h6>
-                            <span className="blockquote-footer">Trader at CexAffiliate</span>
+                            <span className="blockquote-footer">Trader at SignalBlaze</span>
                         </div>
                     </div>
                 </div>

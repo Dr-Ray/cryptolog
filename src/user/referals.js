@@ -11,7 +11,7 @@ const UserReferals = () => {
           </div><br />
           <div class="card-panel app-py-2 app-px-2">
             <div class="input-field container" style={{ "marginBottom": "0px" }}>
-              <input type="text" readonly="" value="https://cryptologia.net/signup?user_id=104" style={{ "textAlign": "center" }} />
+              <input type="text" readonly="" value="https://SignalBlaze.net/signup?user_id=104" style={{ "textAlign": "center" }} />
             </div>
             <span>Referral Link</span>
           </div><br />

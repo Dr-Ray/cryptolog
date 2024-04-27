@@ -109,11 +109,11 @@ const AboutLanding = () => {
                 <div className="card">
                   <div className="card-body p-3 p-md-5">
                     <h2 className="fw-bold">Meet Us</h2>
-                    <p>We are a driven, motivated people who believe that personal engagement is a sense of ownership, and a commitment to investing gives them control over financial future. CexAffiliate has become one of the largest growing crypto/stock trading companies listed in CFD brokerage in the world.</p>
+                    <p>We are a driven, motivated people who believe that personal engagement is a sense of ownership, and a commitment to investing gives them control over financial future. SignalBlaze has become one of the largest growing crypto/stock trading companies listed in CFD brokerage in the world.</p>
                     <p>We have offices in over 12 countries including UK, China, Germany, France and Australia. We are also regulated by the world's biggest supervision authorities. Always providing top-notch trading experience for our clients and becoming one of the best in the industry. We never settle for less as we help our customers grow!</p>
                     <div className="card bg-light border-0 mt-4 mb-1">
                       <div className="card-body px-2 py-1">
-                        <small>For general inquiries please contact <Link className="link-primary text-decoration-none" to="mailto:">info@cexafm.com</Link></small>
+                        <small>For general inquiries please contact <Link className="link-primary text-decoration-none" to="mailto:">info@signalblaze.com</Link></small>
                       </div>
                     </div>
                   </div>

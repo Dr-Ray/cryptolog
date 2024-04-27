@@ -87,7 +87,7 @@ const StockTradingLanding = () => {
                                                 </p>
                                                 <div className="card bg-light border-0 mt-4 mb-1">
                                                     <div className="card-body px-2 py-1">
-                                                        <small>For more information please contact <Link className="link-primary text-decoration-none" to="mailto:">info@cexafm.com</Link></small>
+                                                        <small>For more information please contact <Link className="link-primary text-decoration-none" to="mailto:">info@signalblaze.com</Link></small>
                                                     </div>
                                                 </div>
                                             </div>

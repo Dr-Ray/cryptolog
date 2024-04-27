@@ -25,7 +25,7 @@ const MarketsLanding = () => {
               <div className="col-12 mb-2">
                 <h1 className="fw-bold mb-2">Explore our <span className="text-highlight">Markets</span></h1>
                 <p className="lead text-muted">Trading becomes easy with the right steps.</p>
-                <p>Some believe you must choose between an online broker and a wealth management firm. At CexAffiliate, you don’t need to compromise. Whether you invest on your own, with an advisor, or a little of both — we can support you.</p>
+                <p>Some believe you must choose between an online broker and a wealth management firm. At SignalBlaze, you don’t need to compromise. Whether you invest on your own, with an advisor, or a little of both — we can support you.</p>
               </div>
             </div>
 

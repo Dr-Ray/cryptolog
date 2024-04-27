@@ -88,7 +88,7 @@ const ContactUs = () => {
                                 </div>
                                 <div className="col text-center">
                                     <h5 className="fw-bold mb-1">Email</h5>
-                                    <p className="text-muted">support@cexafm.com<br/>for public inquiries</p>
+                                    <p className="text-muted">support@signalblaze.com<br/>for public inquiries</p>
                                 </div>
                                 <div className="col text-center">
                                     <h5 className="fw-bold mb-1">Call</h5>

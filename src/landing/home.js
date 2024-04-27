@@ -97,7 +97,7 @@ const HomeLanding = () => {
           </div>
           <div className="row mt-5">
             <div className="col-md-12 col-lg-5">
-              <h1 className="mb-3">Build a Better Future with CexAffiliate</h1>
+              <h1 className="mb-3">Build a Better Future with SignalBlaze</h1>
               <p>We offer a safe, dependable, and open environment for trading cryptocurrencies, stocks, forex, commodities, indices, and options; providing direct access to the financial markets with the advantages of competitive pricing, close spreads, low commission, and protection against negative balances.</p>
               <div className="row row-cols-1 row-cols-md-3 gy-2 g-md-2 gx-lg-2 mt-1">
                 <div className="col">
@@ -320,7 +320,7 @@ const HomeLanding = () => {
                 <div className="card-body">
                   <img className="mt-1" src="img/in-cirro-2-icon-6.svg" alt="icon" width="56" height="56" />
                   <h5 className="fw-bold mt-4 text-white">Various Assets</h5>
-                  <p>Trade your way with CexAffiliate’s app for mobile and desktop. Trading hourly, daily or weekly provides unique opportunities.</p>
+                  <p>Trade your way with SignalBlaze’s app for mobile and desktop. Trading hourly, daily or weekly provides unique opportunities.</p>
                 </div>
               </div>
             </div>
@@ -449,7 +449,7 @@ const HomeLanding = () => {
                   </div>
                   <div className="col-md-7 col-lg-6">
                     <blockquote className="blockquote">
-                      <p>CexAffiliate provide clients with excellent customer service and guarantees account safety.</p>
+                      <p>SignalBlaze provide clients with excellent customer service and guarantees account safety.</p>
                     </blockquote>
                     <h2 className="h6 mt-3 mb-0">Anita T.</h2>
                     <span className="blockquote-footer">Day Trader</span>
@@ -601,12 +601,12 @@ const HomeLanding = () => {
                 <div className="card-body">
                   <img className="position-absolute bottom-0 end-0" src="img/blockit/palm.png" alt="client-testimoni" width="200" />
                   <blockquote className="blockquote text-muted">
-                    <p>For the past three years, I have worked with CexAffiliate. The service I got feels highly great. The comfort I experience from knowing that our money is being so wisely managed is immeasurable.</p>
+                    <p>For the past three years, I have worked with SignalBlaze. The service I got feels highly great. The comfort I experience from knowing that our money is being so wisely managed is immeasurable.</p>
                   </blockquote>
                   <div className="mt-4">
                     <img className="mb-2" src="img/favicon.ico" alt="client-logo" width="62" height="62" />
                     <h6 className="mb-0">Lauren Peterson</h6>
-                    <span className="blockquote-footer">Daytrader at CexAffiliate</span>
+                    <span className="blockquote-footer">Daytrader at SignalBlaze</span>
                   </div>
                 </div>
               </div>
@@ -616,12 +616,12 @@ const HomeLanding = () => {
                 <div className="card-body">
                   <img className="position-absolute bottom-0 end-0" src="img/blockit/palm.png" alt="client-testimoni" width="200" />
                   <blockquote className="blockquote text-muted">
-                    <p>This is not thesame with other investment platforms that I have used previously. I would encourage anybody to get in here at CexAffiliate if they truly want to grow and improve their investment portfolio.</p>
+                    <p>This is not thesame with other investment platforms that I have used previously. I would encourage anybody to get in here at SignalBlaze if they truly want to grow and improve their investment portfolio.</p>
                   </blockquote>
                   <div className="mt-4">
                     <img className="mb-2" src="img/favicon.ico" alt="/client-logo" width="62" height="62" />
                     <h6 className="mb-0">Davies Robert</h6>
-                    <span className="blockquote-footer">Trader at CexAffiliate</span>
+                    <span className="blockquote-footer">Trader at SignalBlaze</span>
                   </div>
                 </div>
               </div>
@@ -786,7 +786,7 @@ const HomeLanding = () => {
                         <div className="icon-wrap icon-wrap-small flex-shrink-0 me-1">
                           <i className="fas fa-envelope-open-text fa-lg text-info"></i>
                         </div>
-                        <p className="small text-info mb-0">support@cexafm.com</p>
+                        <p className="small text-info mb-0">support@signalblaze.com</p>
                       </Link>
                     </div>
                     <div className="vr d-none d-md-block"></div>

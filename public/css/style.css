@@ -26428,3 +26428,95 @@ body.loaded .page-loader {
   position: absolute;
   margin: -122px 0 0 -29px;
 } 
+
+.sidenavv {
+    position: fixed;
+    width: 300px;
+    left: 0;
+    top: 0;
+    margin: 0;
+    transform: translateX(-100%);
+    height: 100%;
+    height: calc(100% + 60px);
+    height: -moz-calc(100%);
+    padding-bottom: 60px;
+    background-color: #fff;
+    z-index: 999;
+    overflow-y: auto;
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translateX(-105%);
+    transition: all .3s ease-in-out;
+  }
+
+  
+.sidenavv li {
+    float: none;
+  }
+  
+  .sidenavv li.active {
+    background-color: rgba(0,0,0,0.05);
+  }
+  
+  .sidenavv li>a {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    height: 48px;
+    line-height: 48px;
+    padding: 0 32px
+  }
+  
+  .sidenavv li>a:hover {
+    background-color: rgba(0,0,0,0.05)
+  }
+
+  .sidenavv li>a.btnn,.sidenavv li>a.btnn-large,.sidenavv li>a.btnn-small,.sidenavv li>a.btnn-large,.sidenavv li>a.btnn-flat,.sidenavv li>a.btnn-floating {
+    margin: 10px 15px
+  }
+  
+  .sidenavv li>a.btnn,.sidenavv li>a.btnn-large,.sidenavv li>a.btnn-small,.sidenavv li>a.btnn-large,.sidenavv li>a.btnn-floating {
+    color: #fff
+  }
+  
+  .sidenavv li>a.btnn-flat {
+    color: #343434
+  }
+  
+  .sidenavv li>a.btnn:hover,.sidenavv li>a.btnn-large:hover,.sidenavv li>a.btnn-small:hover,.sidenavv li>a.btnn-large:hover {
+    background-color: #2bbbad
+  }
+  
+  .sidenavv li>a.btnn-floating:hover {
+    background-color: #26a69a
+  }
+  
+  .sidenavv li>a>i,.sidenavv li>a>[class^="mdi-"],.sidenavv li>a li>a>[class*="mdi-"],.sidenavv li>a>i.material-icons {
+    float: left;
+    height: 48px;
+    line-height: 48px;
+    margin: 0 32px 0 0;
+    width: 24px;
+    color: rgba(0,0,0,0.54)
+  }
+
+  .open-overlayy {
+    display: block !important;
+    opacity: 1 !important;
+  }
+  
+  .openNavv {
+    transform: translate(0%) !important;
+  }
+
+  .sidenavv-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    height: 120vh;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 997;
+    display: none
+  }
