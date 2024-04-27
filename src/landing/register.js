@@ -642,7 +642,6 @@ const RegisterationHome = () => {
         </div>
       </section>
 
-
       <div className="modal fade" id="existModalCenter" tabindex="-1" role="dialog" aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered" role="document">
           <div className="modal-content">
