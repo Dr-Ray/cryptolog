@@ -4,7 +4,7 @@ import { AuthContext } from '../context';
 
 const TopNav = () => {
     const [openNav, setopenNav] = useState(false);
-    const {isLoggedIn, setIsloggedIn} = useContext(AuthContext);
+    const {isLoggedIn, setIsloggedIn, currentUser} = useContext(AuthContext);
     return (
         <>
             <div className="navbar-fixed">
@@ -19,7 +19,7 @@ const TopNav = () => {
                             <li><Link to="/user"><b>SignalBlaze</b></Link></li>
                         </ul>
                         <ul className="right">
-                            <li className="hide-on-med-and-down">Ray Adolph</li>
+                            <li className="hide-on-med-and-down">{currentUser.fullname}</li>
                             <li><span className="material-icons notranslate " style={{ "fontSize": "20px", "top": "0px" }}>dark_mode</span></li>
                             <li className="li"><Link to="/user/notifications-list"><span className="material-icons notranslate">notifications</span>(0)</Link></li>
                         </ul>

@@ -8,9 +8,11 @@ import { AuthContext } from '../../context';
 const DepositStep4 = () => {
     const { depositDetails } = useContext(AuthContext)
     const [copyText, setCopyText] = useState(depositDetails.data.wallet_address);
+
+    // console.log(depositDetails)
    
     const handleCopyText = (e) => {
-        setCopyText(e.target.value);
+        setCopyText(e.target.value); 
     };
 
     return (
@@ -18,8 +20,8 @@ const DepositStep4 = () => {
             <section className="roww center">
                 <div className="col l4 offset-l4 s12">
                     <div className="cardd-panel">
-                        <p>SEND {Math.fround(depositDetails.amount/6500)} BTC</p>
-                        <p>TO THE WALLET ADDRESS BELOW OR SCAN THE QR CODE WITH YOUR {depositDetails.data.paymethod} WALLET APP</p> 
+                        <p>SEND {Math.fround(depositDetails.data.amount/6500)} BTC</p>
+                        <p>TO THE WALLET ADDRESS BELOW OR SCAN THE QR CODE WITH YOUR <strong style={{fontWeight:"bold"}}>{depositDetails.data.paymethod.toUpperCase()}</strong> WALLET APP</p> 
                         <p></p>
                         <div className="input-field">
                             <CopyToClipboard text={copyText}

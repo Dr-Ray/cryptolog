@@ -1,7 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
+import CopyToClipboard from 'react-copy-to-clipboard'
 import { Link } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 const UserReferals = () => {
+  const [copyText, setCopyText] = useState(`https://signalBlaze.net/signup?user_id=${Math.floor(Math.random()*200)}`);
+
+  const handleCopyText = (e) => {
+    setCopyText(e.target.value);
+};
+
   return (
     <>
       <div class="roww container">
@@ -11,7 +20,11 @@ const UserReferals = () => {
           </div><br />
           <div class="card-panel app-py-2 app-px-2">
             <div class="input-field container" style={{ "marginBottom": "0px" }}>
-              <input type="text" readonly="" value="https://SignalBlaze.net/signup?user_id=104" style={{ "textAlign": "center" }} />
+              <CopyToClipboard text={copyText}
+                onCopy={() => toast("Referal link copied successfully")}>
+                <i className="material-icons prefix">content_copy</i>
+              </CopyToClipboard>
+              <input type="text" readonly="" onChange={handleCopyText} defaultValue={copyText} style={{ "textAlign": "center" }} />
             </div>
             <span>Referral Link</span>
           </div><br />
@@ -26,6 +39,7 @@ const UserReferals = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </>
   )
 }

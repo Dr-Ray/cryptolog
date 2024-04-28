@@ -11,7 +11,7 @@ const TradingPlans = () => {
             <div className="cardd hoverable app-py-1 app-px-2" style={{"borderRadius": "10px"}}> Trading<br/><span style={{"fontSize": "30px"}}>Gold account</span>
                 <hr/>
                 <center>
-                    <h4 className="alt-color" style={{"fontSize": "35px", "fontWeight": "bold"}}>$50,000.00</h4><br/><br/><Link className="btnn " to="/user/deposits/fund/step1?type=fund&amp;amount=50000&amp;comment= Gold account trading ">FUND PLAN</Link>
+                    <h4 className="alt-color" style={{"fontSize": "35px", "fontWeight": "bold"}}>$50,000.00</h4><br/><br/><Link className="btnn " to="/user/deposits/fund/step3/fund/50000/Gold account trading ">FUND PLAN</Link>
                 </center>
             </div>
         </div>
@@ -19,7 +19,7 @@ const TradingPlans = () => {
             <div className="cardd hoverable app-py-1 app-px-2" style={{"borderRadius": "10px"}}> Trading<br/><span style={{"fontSize": "30px"}}>Premium account</span>
                 <hr/>
                 <center>
-                    <h4 className="alt-color" style={{"fontSize": "35px", "fontWeight": "bold"}}>$100,000.00</h4><br/><br/><Link className="btnn " to="/user/deposits/fund/step1?type=fund&amp;amount=100000&amp;comment= Premium account trading ">FUND PLAN</Link>
+                    <h4 className="alt-color" style={{"fontSize": "35px", "fontWeight": "bold"}}>$100,000.00</h4><br/><br/><Link className="btnn " to="/user/deposits/fund/step3/fund/100000/Premium account trading ">FUND PLAN</Link>
                 </center>
             </div>
         </div>

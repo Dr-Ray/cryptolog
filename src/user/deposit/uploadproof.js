@@ -8,6 +8,8 @@ const UploadProof = () => {
 
     const uploadFile = (e) => {
         setFilename(e.target.files[0].name)
+
+        // upload file to return id
     }
 
     const handleSubmit = (e) => {

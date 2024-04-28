@@ -13,6 +13,29 @@ const Login = () => {
 
   const handleSubmit = async(e) => {
     setIsloggedIn(true);
+    setCurrentUser({
+      fullname:"John Snow",
+      balance:{
+        tradingBalance:"0",
+        btcMiningBalance:"0",
+        ethMiningBalance:"0",
+        dogeMiningBalance:"0",
+        binanceMiningBalance:"0",
+        referalBalance:"0",
+        cosmosMiningBalance:"0",
+        tradingDepositBalance:"0",
+      },
+      wishlist:[],
+      city:"Uyo",
+      state:"Aks",
+      country:"Nigeria",
+      address:"ekpri nsukara",
+      zip:"520001",
+      profileImg:"hunan.png",
+      email:"raypeter053@gmail.com",
+      tradingPlan:"Premium account"
+
+    })
     navigate('/user')
     setError('');
     // const login = await fetch('http://localhost:4500/user/login', {

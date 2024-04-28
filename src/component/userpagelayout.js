@@ -6,7 +6,7 @@ import { AuthContext } from '../context';
 
 const HomePageLayout = () => {
   const navigate = useNavigate();
-  const {isLoggedIn} = useContext(AuthContext);
+  const {isLoggedIn } = useContext(AuthContext);
  
   useEffect(() => {
     // Checking if user is not loggedIn

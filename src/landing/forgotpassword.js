@@ -11,7 +11,7 @@ const ForgotPasswordHome = () => {
                             <div className="card">
                                 <div className="card-body p-3 p-md-5">
                                     <div className="text-center">
-                                        <Link href="/" className="d-block mb-3 mb-sm-4 auth-page-logo">
+                                        <Link to="/" className="d-block mb-3 mb-sm-4 auth-page-logo">
                                             <img src="/assets/images/logoIcon/logo_2.png" alt="logo" />
                                         </Link>
                                     </div>

@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import '../dashboard.css';
 import { Link } from 'react-router-dom';
 import BottomNav from '../component/bottomnav';
+import { AuthContext } from '../context';
 
 const HomeDashboard = () => {
+    const { currentUser} = useContext(AuthContext);
     return (
         <>
             <section className="container">
@@ -12,11 +14,11 @@ const HomeDashboard = () => {
                         <div className="bg bg-secondary white-text dashboard-trading notranslate app-px-1 app-py-1" style={{ "background": "url('../assets/images/site/DashboardTrading.png')" }}>
                             <div className="roww center white-text">
                                 <div className="col l6 s6 app-py-1">
-                                    <h3 className="f-20 undefined white-text">$90.00</h3>
+                                    <h3 className="f-20 undefined white-text">${currentUser.balance.tradingDepositBalance}</h3>
                                     <span style={{ "fontSize": "11px" }}>DEPOSIT BALANCE</span>
                                 </div>
                                 <div className="col l6 s6 app-py-1">
-                                    <h3 className="f-20 undefined white-text">$80.00</h3><span style={{ "fontSize": "11px" }}>PROFIT BALANCE</span>
+                                    <h3 className="f-20 undefined white-text">${currentUser.balance.tradingDepositBalance}</h3><span style={{ "fontSize": "11px" }}>PROFIT BALANCE</span>
                                 </div>
                             </div><br />
                             <center>
@@ -28,7 +30,7 @@ const HomeDashboard = () => {
                         <div className="roww center">
                             <div className="col s6" style={{ "cursor": "pointer" }}>
                                 <Link to="/user/plans/categories/trading">
-                                    <h6>TRADING PLAN</h6>Premium account Plan
+                                    <h6>TRADING PLAN</h6>{currentUser.tradingPlan}
                                 </Link>
                             </div>
                             <div className="col s6" style={{ "cursor": "pointer" }}>

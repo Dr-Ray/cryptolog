@@ -7,7 +7,8 @@ const DepositStep3 = () => {
   // console.log(depositDetails)
   const navigate = useNavigate();
   const {amount} = useParams();
-  const [paymethod, setPaymethod] = useState('');
+  const [paymethod, setPaymethod] = useState('btc');
+
   const handleSubmit = () => {
     let data = {
       paymethod,
@@ -15,6 +16,8 @@ const DepositStep3 = () => {
       wallet_address:"234c347chiurcercg83gwg6c8wecw8ewc",
       id:Math.floor(Math.random()*10000)+1
     }
+
+    console.log(data)
 
     setDepositDetails({...depositDetails, data})
     // send data to backend return true with wallet address
