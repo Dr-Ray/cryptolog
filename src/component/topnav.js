@@ -1,10 +1,12 @@
 import React, { useContext, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../context';
 
 const TopNav = () => {
+    const navigate = useNavigate();
+
     const [openNav, setopenNav] = useState(false);
-    const {isLoggedIn, setIsloggedIn, currentUser} = useContext(AuthContext);
+    const { setIsloggedIn, currentUser, setCurrentUser } = useContext(AuthContext);
     return (
         <>
             <div className="navbar-fixed">
@@ -33,8 +35,8 @@ const TopNav = () => {
                         <div className="background">
                             <img src="/assets/images/site/Office.jpg" alt='office' />
                         </div>
-                        <img className="circle" src="/uploads/images/human.png" alt='RAY ADOLPH' />
-                        <span className="white-text" style={{ "marginTop": "15px", "display": "inline-block" }}>RAY ADOLPH</span>
+                        <img className="circle" src={`/uploads/images/${currentUser.fullname}`} alt={currentUser.fullname} />
+                        <span className="white-text" style={{ "marginTop": "15px", "display": "inline-block" }}>{currentUser.fullname}</span>
                         <br /><br /><br />
                     </div>
                 </li>
@@ -43,10 +45,12 @@ const TopNav = () => {
                         <li className="active">
                             <div>
                                 <ul>
-                                    <li><Link className="sidenav-close" to="/user/">
-                                        <span className="material-icons notranslate">home</span>
-                                        <span style={{ "paddingLeft": "10px" }}>Home</span>
-                                    </Link></li>
+                                    <li>
+                                        <Link className="sidenav-close" to="/user/">
+                                            <span className="material-icons notranslate">home</span>
+                                            <span style={{ "paddingLeft": "10px" }}>Home</span>
+                                        </Link>
+                                    </li>
                                     <li><Link className="sidenav-close" to="/user/account">
                                         <span className="material-icons notranslate">account_circle</span>
                                         <span style={{ "paddingLeft": "10px" }}>Account</span>
@@ -80,7 +84,11 @@ const TopNav = () => {
                                         <span style={{ "paddingLeft": "10px" }}>Buy Signals</span>
                                     </Link></li>
                                     <li>
-                                        <Link className="sidenav-close" onClick={()=> setIsloggedIn(false)}>
+                                        <Link className="sidenav-close" onClick={() => {
+                                            setIsloggedIn(false)
+                                            setCurrentUser({});
+                                            navigate('/login')
+                                        }}>
                                             <span className="material-icons notranslate">power_settings_new</span>
                                             <span style={{ "paddingLeft": "10px" }}>Sign Out</span>
                                         </Link>

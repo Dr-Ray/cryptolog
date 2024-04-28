@@ -13,13 +13,13 @@ const UserReferals = () => {
 
   return (
     <>
-      <div class="roww container">
-        <div class="col l4 s12 center">
-          <div class="card-panel app-py-2 app-px-2">
-            <h1>$0.00</h1><span>Referral Balance</span><br /><br /><Link class="btnn" to="/user/withdrawals/crypto">WITHDRAW</Link>
+      <div className="roww container">
+        <div className="col l4 s12 center">
+          <div className="card-panel app-py-2 app-px-2">
+            <h1>$0.00</h1><span>Referral Balance</span><br /><br /><Link className="btnn" to="/user/withdrawals/crypto">WITHDRAW</Link>
           </div><br />
-          <div class="card-panel app-py-2 app-px-2">
-            <div class="input-field container" style={{ "marginBottom": "0px" }}>
+          <div className="card-panel app-py-2 app-px-2">
+            <div className="input-field container" style={{ "marginBottom": "0px" }}>
               <CopyToClipboard text={copyText}
                 onCopy={() => toast("Referal link copied successfully")}>
                 <i className="material-icons prefix">content_copy</i>
@@ -29,11 +29,11 @@ const UserReferals = () => {
             <span>Referral Link</span>
           </div><br />
         </div>
-        <div class="col l8 s12">
-          <div class="container">
-            <ul class="collection">
-              <li class="collection-item app-py-2">
-                <p id="no-data" style={{ "textAlign": "center" }}><span class="app-font-normal">No Referrals Yet</span></p>
+        <div className="col l8 s12">
+          <div className="container">
+            <ul className="collection">
+              <li className="collection-item app-py-2">
+                <p id="no-data" style={{ "textAlign": "center" }}><span className="app-font-normal">No Referrals Yet</span></p>
               </li>
             </ul>
           </div>

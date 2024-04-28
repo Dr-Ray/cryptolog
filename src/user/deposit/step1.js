@@ -8,7 +8,7 @@ const DepositStep1 = () => {
   const { setDepositDetails } = useContext(AuthContext);
   const [amount, setAmount] = useState('');
   const [account, setAccount] = useState('trading_balance_deposit');
-  const [error, setError] = useState('');
+  // const [error, setError] = useState('');
 
   const handleSubmission = () => {
     setDepositDetails({

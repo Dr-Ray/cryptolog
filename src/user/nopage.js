@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom'
 const Nopage = () => {
     return (
         <>
-            <div class="fade-appear-done fade-enter-done">
-                <div class="container"><br />
+            <div className="fade-appear-done fade-enter-done">
+                <div className="container"><br />
                     <Link to="/" >Go Back</Link><br /> <br />
-                    <div class="cardd-panel ">
-                        <div class="container">
+                    <div className="cardd-panel ">
+                        <div className="container">
                             <h1>404 Error</h1>
                             <p>Page Not Found</p>
                         </div>

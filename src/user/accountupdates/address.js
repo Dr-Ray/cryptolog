@@ -1,41 +1,43 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AuthContext } from '../../context';
 
 const AddressUpdate = () => {
+    const { currentUser } = useContext(AuthContext);
     return (
         <>
-            <div class="roww"><br /><br />
-                <div class="col l6 offset-l3 s12">
-                    <div class="cardd-panel">
+            <div className="roww"><br /><br />
+                <div className="col l6 offset-l3 s12">
+                    <div className="cardd-panel">
                         <center>
                             <form autocomplete="off">
-                                <div class="roww">
+                                <div className="roww">
                                     <div>
-                                        <div class="input-field undefined">
-                                            <input type="text" id="street_address" name="street_address" maxlength="300" inputmode="text" required="" value="" />
-                                            <label class="active" for="street_address">street address</label>
+                                        <div className="input-field undefined">
+                                            <input type="text" id="email_address" name="email" maxlength="300" inputMode="text" required="" value={currentUser.email} />
+                                            <label className="active" htmlFor="email_address">email address</label>
                                         </div>
                                     </div>
                                     <div>
-                                        <div class="input-field undefined">
-                                            <input type="text" id="post_code" name="post_code" maxlength="300" inputmode="text" required="" value="" />
-                                            <label class="active" for="post_code">zip_code</label>
+                                        <div className="input-field undefined">
+                                            <input type="text" id="phone" name="phone" maxlength="300" inputMode="text" required="" value={currentUser.phone} />
+                                            <label className="active" htmlFor="phone">Mobile number</label>
                                         </div>
                                     </div>
                                     <div>
-                                        <div class="input-field undefined">
-                                            <input type="text" id="city" name="city" maxlength="300" inputmode="text" required="" value="Abijan" />
-                                            <label class="active" for="city">city</label>
+                                        <div className="input-field undefined">
+                                            <input type="text" id="city" name="city" maxlength="300" inputMode="text" required="" value={currentUser.city} />
+                                            <label className="active" htmlFor="city">city</label>
                                         </div>
                                     </div>
                                     <div>
-                                        <div class="input-field undefined">
-                                            <input type="text" id="state" name="state" maxlength="300" inputmode="text" required="" value="Lesotho" />
-                                            <label class="active" for="state">state</label>
+                                        <div className="input-field undefined">
+                                            <input type="text" id="state" name="state" maxlength="300" inputMode="text" required="" value={currentUser.state} />
+                                            <label className="active" htmlFor="state">state</label>
                                         </div>
                                     </div>
-                                    <div class="input-field undefined">
-                                        <label class="active">country</label>
-                                        <select id="country" class="browser-default undefined">
+                                    <div className="input-field undefined">
+                                        <label className="active">country</label>
+                                        <select id="country" className="browser-default undefined">
                                             <option value="Afghanistan">Afghanistan</option>
                                             <option value="Albania">Albania</option>
                                             <option value="Algeria">Algeria</option>
@@ -289,7 +291,7 @@ const AddressUpdate = () => {
                                         </select>
                                     </div>
                                 </div>
-                                <div><button type="submit" class="btnn btnn-full">Update</button></div>
+                                <div><button type="submit" className="btnn btnn-full">Update</button></div>
                             </form>
                         </center>
                     </div>

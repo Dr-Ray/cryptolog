@@ -37,40 +37,40 @@ const UserMarkets = () => {
   
   return (
     <>
-      <div class="container">
-        <div class="roww center" style={{ "fontSize": "14px", "textAlign": "center !important" }}>
-          <div class="col l2 offset-l1 offset-s1 s2" onClick={()=>{
+      <div className="container">
+        <div className="roww center" style={{ "fontSize": "14px", "textAlign": "center !important" }}>
+          <div className="col l2 offset-l1 offset-s1 s2" onClick={()=>{
             setGen(stockPrices)
           }}>
             <img src="/assets/images/svgs/IconStocks.svg" style={{ "width": "18px", "height": "20px" }} alt="" /><br />
             <span style={{ "color": "rgb(133, 137, 155)" }}>Stocks</span>
           </div>
-          <div class="col l2 s2" onClick={()=>{
+          <div className="col l2 s2" onClick={()=>{
             setGen(cryptoPricess)
           }}>
             <img src="/assets/images/svgs/IconCrypto.svg" style={{ "width": "18px", "height": "20px" }} alt="" /><br />
             <span style={{ "color": "rgb(133, 137, 155)" }}>Crypto</span>
           </div>
-          <div class="col l2 s2" onClick={()=>{
+          <div className="col l2 s2" onClick={()=>{
             setGen(forexPrices)
           }}>
             <img src="/assets/images/svgs/IconCurrencies.svg" style={{ "width": "18px", "height": "20px" }} alt="" /><br />
             <span style={{ "color": "rgb(133, 137, 155)" }}>Forex</span>
           </div>
-          <div class="col l2 s2" onClick={()=>{
+          <div className="col l2 s2" onClick={()=>{
             setGen(etfPrices)
           }}>
             <img src="/assets/images/svgs/IconIndices.svg" style={{ "width": "18px", "height": "20px" }} alt="" /><br />
             <span style={{ "color": "rgb(133, 137, 155)" }}>ETFs</span>
           </div>
-          <div class="col l2 s2" onClick={()=>{
+          <div className="col l2 s2" onClick={()=>{
             setGen(indexPrices)
           }}>
             <img src="/assets/images/svgs/IconIndices.svg" style={{ "width": "18px", "height": "20px" }} alt="" /><br />
             <span style={{ "color": "rgb(133, 137, 155)" }}>Index</span>
           </div>
         </div><br />
-        <ul class="collection roww">
+        <ul className="collection roww">
           {
             gen?.map((data, index)=>(
               <IndexPrices data={data}  key={index}/>

@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AuthContext } from '../../context';
 
 const CryptoWithdrawal = () => {
+  const { currentUser } = useContext(AuthContext);
   return (
     <>
       <section class="roww center">
@@ -12,14 +14,14 @@ const CryptoWithdrawal = () => {
                 <div class="input-field undefined">
                   <label class="active">from</label>
                   <select id="from" class="browser-default app-mb-3">
-                    <option value="trading_balance_profit" selected="">Trading Profit Balance ($0.00)</option>
-                    <option value="trading_balance_deposit">Trading Deposit Balance ($0.00)</option>
-                    <option value="mining_balance_btc">Bitcoin Mining (0 BTC) </option>
-                    <option value="mining_balance_eth">Ethereum Mining (0 ETH)</option>
-                    <option value="mining_balance_atom">Cosmos Mining (0 ATOM)</option>
-                    <option value="mining_balance_doge">Dogecoin Mining (0 DOGE)</option>
-                    <option value="mining_balance_bnb">Binance Coin Mining (0 BNB)</option>
-                    <option value="referral_balance">Referral Balance ($0.00)</option>
+                    <option value="trading_balance_profit" selected="">Trading Profit Balance (${currentUser.trading_profit})</option>
+                    <option value="trading_balance_deposit">Trading Deposit Balance (${currentUser.trading_deposit})</option>
+                    <option value="mining_balance_btc">Bitcoin Mining ({currentUser.btc_mining} BTC) </option>
+                    <option value="mining_balance_eth">Ethereum Mining ({currentUser.fullname} ETH)</option>
+                    <option value="mining_balance_atom">Cosmos Mining ({currentUser.cosmos_mining} ATOM)</option>
+                    <option value="mining_balance_doge">Dogecoin Mining ({currentUser.dogecoin} DOGE)</option>
+                    <option value="mining_balance_bnb">Binance Coin Mining ({currentUser.binince_coin} BNB)</option>
+                    <option value="referral_balance">Referral Balance (${currentUser.referal_balance})</option>
                   </select>
                 </div>
                 <div class="input-field undefined">

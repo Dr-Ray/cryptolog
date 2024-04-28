@@ -1,29 +1,65 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { AuthContext } from '../context';
+import { InfinitySpin } from 'react-loader-spinner';
 
 const RegisterationHome = () => {
-
   const navigate = useNavigate();
+
+  const { setCurrentUser } = useContext(AuthContext)
+
   const [firstname, setFirstName] = useState('');
   const [lastname, setLastName] = useState('');
   const [email, setEmail] = useState('');
   const [country, setCountry] = useState('');
   const [mobile, setMobile] = useState('');
+  const [currency, setCurrency] = useState('USD');
+  const [state, setState] = useState('');
+  const [city, setCity] = useState('');
   const [cc, setCC] = useState('');
   const [mc, setMC] = useState('');
   const [password, setPassword] = useState('');
   const [repassword, setRePassword] = useState('');
+  const [isLoading, setIsloading] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleRegister = (e) => {
-    let data = {
-      firstname,
-      lastname,
-      email,
-      country,
-      mobile:`${mc}${mobile}`
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    setIsloading(true)
+    try {
+      let data = {
+        password,
+        email,
+        "fullname": `${firstname} ${lastname}`,
+        "country": `${country} (${cc})`,
+        "phone": `+${mc}${mobile}`,
+        currency,
+        state,
+        city
+      }
+
+      const resp = await fetch('http://localhost:4500/user/register', {
+        method: "POST",
+        headers: {
+          "content-type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+      const response = await resp.json();
+      setTimeout(()=> {
+        setIsloading(false)
+      }, 2000)
+      setCurrentUser(response.user)
+      if (response.status === 200) {
+        navigate('/verification/email')
+      } else {
+        setError(response.message)
+      }
+
+    } catch (err) {
+      setIsloading(false);
+      setError(err.message);
     }
-
-    navigate('/login')
   }
   return (
     <>
@@ -84,8 +120,8 @@ const RegisterationHome = () => {
                       <div className="col-md-6">
                         <div className="form-group">
                           <label className="form-label">Country</label>
-                          <select 
-                            name="country" 
+                          <select
+                            name="country"
                             className="form--control form-select"
                             value={country}
                             onChange={(e) => {
@@ -584,39 +620,93 @@ const RegisterationHome = () => {
                           </select>
                         </div>
                       </div>
+
                       <div className="col-md-6">
+                        <div className="form-group">
+                          <label className="form-label">State</label>
+                          <input
+                            type="text"
+                            className="form-control form--control checkUser h-45"
+                            name="state"
+                            value={state}
+                            onChange={(e) => setState(e.target.value)}
+                            required
+                          />
+                          <small className="text-danger usernameExist"></small>
+                        </div>
+                      </div>
+
+                      <div className="col-md-6">
+                        <div className="form-group">
+                          <label className="form-label">City</label>
+                          <input
+                            type="text"
+                            className="form-control form--control checkUser h-45"
+                            name="city"
+                            value={city}
+                            onChange={(e) => setCity(e.target.value)}
+                            required />
+                          <small className="text-danger usernameExist"></small>
+                        </div>
+                      </div>
+
+                      <div className="col-md-6">
+                        <div className="form-group">
+                          <label className="form-label">Currency</label>
+                          <select
+                            className="form-control form--control checkUser h-45"
+                            value={currency}
+                            onChange={(e) => {
+                              setCurrency(e.target.value)
+                            }}
+                          >
+                            <option selected value="USD">
+                              USD
+                            </option>
+                            <option value="GBR">
+                              GBR
+                            </option>
+                            <option value="YEN">
+                              YEN
+                            </option>
+                          </select>
+                          <small className="text-danger usernameExist"></small>
+                        </div>
+                      </div>
+
+                      <div className="col-md-12">
                         <div className="form-group">
                           <label className="form-label">Mobile</label>
                           <div className="input-group ">
                             <span className="input-group-text mobile-code">
                               +{mc}
                             </span>
-                            <input 
-                              type="number" 
-                              name="mobile" 
+                            <input
+                              type="number"
+                              name="mobile"
                               value={mobile}
-                              onChange={(e) => setMobile(e.target.value)} 
-                              className="form-control form--control checkUser" 
-                              required 
+                              onChange={(e) => setMobile(e.target.value)}
+                              className="form-control form--control checkUser"
+                              required
                             />
                           </div>
                           <small className="text-danger mobileExist"></small>
                         </div>
                       </div>
-                      <div className="col-12">
+                      <div className="col-6">
                         <div className="form-group">
                           <label className="form-label">Password</label>
-                          <input 
-                            type="password" 
-                            className="form-control form--control h-45" 
-                            name="password" 
+                          <input
+                            type="password"
+                            className="form-control form--control h-45"
+                            name="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            required 
-                            />
+                            required
+                          />
                         </div>
                       </div>
-                      <div className="col-12">
+                      <div className="col-6">
                         <div className="form-group">
                           <label className="form-label">Confirm Password</label>
                           <input type="password" className="form-control form--control h-45" name="password_confirmation" value={repassword}
@@ -625,11 +715,34 @@ const RegisterationHome = () => {
                       </div>
                       <div className="col-12">
                       </div><br />
-                      <div className="col-12">
-                        <button type="submit" className="btn btn-primary w-100">Create Account</button>
-                      </div>
+
+                      {
+                        isLoading ? (
+                          <InfinitySpin
+                            visible={true}
+                            width="200"
+                            color="#4fa94d"
+                            ariaLabel="infinity-spin-loading"
+                          />
+                        ) : (
+
+                          <>
+                            <div className="col-12">
+                              <button type="submit" className="btn btn-primary w-100">Create Account</button>
+                            </div><br /><br />
+                          </>
+                        )
+                      }
+                      <br />
+                      {
+                        error && (
+                          <div className="red black-text lighten-4 card-panel text-center" style={{ "padding": "30px" }}><span>{error}</span><br /></div>
+                        )
+                      }
                       <div className="col-12 mt-4">
-                        <p className="text-center">Already have an account? <Link to="/login" className="fw-bold text--base">Login Account</Link></p>
+                        <p className="text-center">
+                          Already have an account? <Link to="/login" className="fw-bold text--base">Login Account</Link>
+                        </p>
                       </div>
                       <br />
                       <br />
@@ -641,26 +754,6 @@ const RegisterationHome = () => {
           </div>
         </div>
       </section>
-
-      <div className="modal fade" id="existModalCenter" tabindex="-1" role="dialog" aria-hidden="true">
-        <div className="modal-dialog modal-dialog-centered" role="document">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h5 className="modal-title" id="existModalLongTitle">You are with us</h5>
-              <button type="button" className="close" data-bs-dismiss="modal" aria-label="Close">
-                <i className="las la-times"></i>
-              </button>
-            </div>
-            <div className="modal-body">
-              <h6 className="text-center">You already have an account please Login </h6>
-            </div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-dark" data-bs-dismiss="modal">Close</button>
-              <Link to="/login" className="btn btn--base">Login</Link>
-            </div>
-          </div>
-        </div>
-      </div>
     </>
   )
 }

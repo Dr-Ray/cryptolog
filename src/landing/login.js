@@ -2,59 +2,57 @@ import React, { useContext, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../context';
+import { InfinitySpin } from 'react-loader-spinner';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Login = () => {
   const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [isLoading, setIsloading] = useState(false);
 
   const { setIsloggedIn, setCurrentUser } = useContext(AuthContext)
 
-  const handleSubmit = async(e) => {
-    setIsloggedIn(true);
-    setCurrentUser({
-      fullname:"John Snow",
-      balance:{
-        tradingBalance:"0",
-        btcMiningBalance:"0",
-        ethMiningBalance:"0",
-        dogeMiningBalance:"0",
-        binanceMiningBalance:"0",
-        referalBalance:"0",
-        cosmosMiningBalance:"0",
-        tradingDepositBalance:"0",
-      },
-      wishlist:[],
-      city:"Uyo",
-      state:"Aks",
-      country:"Nigeria",
-      address:"ekpri nsukara",
-      zip:"520001",
-      profileImg:"hunan.png",
-      email:"raypeter053@gmail.com",
-      tradingPlan:"Premium account"
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsloading(true);
+    try {
+      let data = {
+        password,
+        email
+      }
 
-    })
-    navigate('/user')
-    setError('');
-    // const login = await fetch('http://localhost:4500/user/login', {
-    //   // headers:{
-    //   //   "content-type":"application/json"
-    //   // },
-    //   body:{
-    //     email,password
-    //   },
-    // });
+      const resp = await fetch('http://localhost:4500/user/login', {
+        method: "POST",
+        headers: {
+          "content-type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+      const response = await resp.json();
+      setTimeout(()=> {
+        setIsloading(false)
+      }, 2000)
 
-    // if(login.status === 200) {
-    //   setIsloggedIn(true);
-    //   setCurrentUser(login.user);
-    //   navigate('/user')
-    // }else{
-    //   setIsloggedIn(false);
-    //   setError(login.message);
-    // }
+      if (response.status === 200) {
+        setIsloggedIn(true)
+        setCurrentUser(response.user)
+        navigate('/user')
+      } else {
+        setTimeout(()=> {
+          setError(response.message)
+          toast(response.message)
+        }, 2100)
+        
+      }
+
+    } catch (err) {
+      setIsloading(false)
+      setError(err.message)
+    }
+
   }
   return (
     <>
@@ -67,15 +65,14 @@ const Login = () => {
                   <Link to="/" className="text-center d-block mb-3 mb-sm-4 auth-page-logo">
                     <img src="/img/logog.png" alt="logo" />
                   </Link>
-                  {
-                    error&&(
-                      <div className='alert-error alert-danger'>
-                        {
-                          error
-                        }
+                  {/* {
+                    error && (
+                      <div className="red black-text lighten-4 card-panel text-center" style={{ "padding": "30px" }}>
+                        <span>{error}</span><br />
                       </div>
                     )
-                  }
+                  } */}
+                  <ToastContainer />
                   <form className="verify-gcaptcha account-form" onSubmit={handleSubmit}>
                     <input type="hidden" name="_token" value="i0O64BYKigXcwBjLJG8tTEX1NnLS3ClnmgLC1LjH" />
                     <div className="mb-4">
@@ -122,9 +119,24 @@ const Login = () => {
                       </div>
                       <div className="col-12">
                       </div>
-                      <div className="col-12">
-                        <button type="submit" className="btn btn-primary w-100">Login Account</button>
-                      </div>
+
+                      {
+                        isLoading ? (
+                          <InfinitySpin
+                            visible={true}
+                            width="200"
+                            color="#4fa94d"
+                            ariaLabel="infinity-spin-loading"
+                          />
+                        ) : (
+                          <>
+                            <div className="col-12">
+                              <button type="submit" className="btn btn-primary w-100">Login Account</button>
+                            </div><br /><br />
+                          </>
+                        )
+                      }
+
                       <div className="col-12 mt-4">
                         <p className="text-center">Don't have any account?
                           <Link to="/register" className="fw-bold text--base">Create Account</Link>

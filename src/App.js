@@ -27,7 +27,7 @@ import BuyCrypto from './user/pages/buycrypto';
 import CopyTrading from './user/trading/copyTrading';
 import DepositStep4 from './user/deposit/step4';
 import UploadProof from './user/deposit/uploadproof';
-import EmailVerification from './user/verification/email';
+import EmailVerification from './landing/email';
 import AddressVerification from './user/verification/address';
 import IdentityVerification from './user/verification/identity';
 import AddressUpdate from './user/accountupdates/address';
@@ -54,7 +54,6 @@ import CopyTradingLanding from './landing/copytrading';
 import RegisterationHome from './landing/register';
 import ForgotPasswordHome from './landing/forgotpassword';
 import StockTradingLanding from './landing/stockstrading';
-
 
 function App() {
 	const [theme, setTheme] = useState('light');
@@ -83,6 +82,8 @@ function App() {
 							<Route path="/cryptotrading/" element={<CryptoTradingLanding />} />
 							<Route path="/copytrading/" element={<CopyTradingLanding />} />
 							<Route path="/stockstrading/" element={<StockTradingLanding />} />
+							<Route path='/verification/email' element={<EmailVerification />} />
+							<Route path='/verification/identity' element={<IdentityVerification />} />
 						</Route>
 						<Route path="/user" element={<HomePageLayout />}>
 							<Route index element={<HomeDashboard />} />
