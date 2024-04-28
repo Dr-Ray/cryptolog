@@ -11,7 +11,7 @@ const TermsLanding = () => {
               <h6 className="d-none">Breadcrumb</h6>
               <nav aria-label="breadcrumb">
                 <ol className="breadcrumb mb-0">
-                  <li className="breadcrumb-item"><Link to="#">Home</Link></li>
+                  <li className="breadcrumb-item"><Link to="/">Home</Link></li>
                 </ol>
               </nav>
             </div>

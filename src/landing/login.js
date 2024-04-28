@@ -7,12 +7,31 @@ const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-  const { setIsloggedIn } = useContext(AuthContext)
+  const { setIsloggedIn, setCurrentUser } = useContext(AuthContext)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     setIsloggedIn(true);
     navigate('/user')
+    setError('');
+    // const login = await fetch('http://localhost:4500/user/login', {
+    //   // headers:{
+    //   //   "content-type":"application/json"
+    //   // },
+    //   body:{
+    //     email,password
+    //   },
+    // });
+
+    // if(login.status === 200) {
+    //   setIsloggedIn(true);
+    //   setCurrentUser(login.user);
+    //   navigate('/user')
+    // }else{
+    //   setIsloggedIn(false);
+    //   setError(login.message);
+    // }
   }
   return (
     <>
@@ -25,6 +44,15 @@ const Login = () => {
                   <Link to="/" className="text-center d-block mb-3 mb-sm-4 auth-page-logo">
                     <img src="/img/logog.png" alt="logo" />
                   </Link>
+                  {
+                    error&&(
+                      <div className='alert-error alert-danger'>
+                        {
+                          error
+                        }
+                      </div>
+                    )
+                  }
                   <form className="verify-gcaptcha account-form" onSubmit={handleSubmit}>
                     <input type="hidden" name="_token" value="i0O64BYKigXcwBjLJG8tTEX1NnLS3ClnmgLC1LjH" />
                     <div className="mb-4">
@@ -64,7 +92,7 @@ const Login = () => {
                         <div className="d-flex flex-wrap gap-2 justify-content-between">
                           <div className="form-group custom--checkbox">
                             <input type="checkbox" id="remember" name="remember" className="form-check-input" />
-                            <label for="remember">Keep me Logged in</label>
+                            <label htmlFor="remember">Keep me Logged in</label>
                           </div>
                           <Link to="/forgot-password" className="text--base fw-bold">Forgot Password?</Link>
                         </div>

@@ -60,10 +60,11 @@ function App() {
 	const [theme, setTheme] = useState('light');
 	const [currentUser, setCurrentUser] = useState(null);
 	const [isLoggedIn, setIsloggedIn] = useState(false)
+	const [depositDetails, setDepositDetails] = useState({})
 
 	return (
 		<ThemeContext.Provider value={{ theme, setTheme }}>
-			<AuthContext.Provider value={{ currentUser, isLoggedIn, setIsloggedIn, setCurrentUser }}>
+			<AuthContext.Provider value={{ currentUser, isLoggedIn, setIsloggedIn, setCurrentUser, depositDetails, setDepositDetails }}>
 				<BrowserRouter>
 					<Routes>
 						<Route path="/" element={<Layout />}>
@@ -118,9 +119,9 @@ function App() {
 							<Route path='/user/deposits'>
 								<Route index path='/user/deposits/fund' element={<DepositFunds />} />
 								<Route path='/user/deposits/fund/step1' element={<DepositStep1 />} />
-								<Route path='/user/deposits/fund/step2' element={<DepositStep2 />} />
+								<Route path='/user/deposits/fund/step2/:amount/:account' element={<DepositStep2 />} />
 								<Route path='/user/deposits/fund/step3/:type/:amount/:account' element={<DepositStep3 />} />
-								<Route path='/user/deposits/fund/step4' element={<DepositStep4 />} />
+								<Route path='/user/deposits/fund/step4/:wallet_address' element={<DepositStep4 />} />
 								<Route path='/user/deposits/single' element={<DepositSingle />} />
 								<Route path='/user/deposits/list' element={<DepositList />} />
 								<Route path='/user/deposits/upload-proof/:id' element={<UploadProof />} />

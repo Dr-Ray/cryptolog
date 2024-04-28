@@ -1,31 +1,60 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context';
+
 
 const DepositStep1 = () => {
+  const navigate = useNavigate();
+  const { setDepositDetails } = useContext(AuthContext);
+  const [amount, setAmount] = useState('');
+  const [account, setAccount] = useState('trading_balance_deposit');
+  const [error, setError] = useState('');
+
+  const handleSubmission = () => {
+    setDepositDetails({
+      amount,
+      account
+    })
+    navigate(`/user/deposits/fund/step2/${amount}/${account}`)
+  }
   return (
     <>
-      <section class="roww">
-        <div class="col l4 offset-l4 s12 center"><br />
+      <section className="roww">
+        <div className="col l4 offset-l4 s12 center"><br />
           <h3>Fund Account</h3><br /><Link to="/user/plans">VIEW PRICING</Link><br /><br />
-          <div class="cardd-panel"><br /><br />
-            <form autocomplete="off">
-              <div class="roww">
+          <div className="cardd-panel"><br /><br />
+            <form autoComplete="off" onSubmit={handleSubmission}>
+              <div className="roww">
                 <div>
-                  <div class="input-field">
-                    <span class=" prefix">USD</span>
-                    <label class="active" for="amount">amount</label>
-                    <input type="number" id="amount" min="100" max="" step="any" inputmode="decimal" name="amount" class="" required="" value="0" />
+                  <div className="input-field">
+                    <span className=" prefix">USD</span>
+                    <label className="active" htmlFor="amount">amount</label>
+                    <input 
+                      type="number" 
+                      id="amount" 
+                      min="100" 
+                      max="" 
+                      step="any" 
+                      inputMode="decimal" 
+                      name="amount" 
+                      className="" 
+                      required=""
+                      value={amount}
+                      onChange={(e) => setAmount(e.target.value)}
+                    />
                   </div>
                 </div>
-                <div class="input-field undefined">
-                  <label class="active">account</label>
-                  <select id="account" class="browser-default undefined">
-                    <option value="trading_balance_deposit" selected="">Trading Balance Deposit</option>
+                <div className="input-field undefined">
+                  <label className="active">account</label>
+                  <select id="account" className="browser-default undefined"
+                    value={account}
+                    onChange={(e) => setAccount(e.target.value)}>
+                    <option value="trading_balance_deposit">Trading Balance Deposit</option>
                   </select>
                 </div>
               </div>
               <div>
-                <button type="submit" class="btnn btnn-full">Proceed</button>
+                <button type="submit" className="btnn btnn-full">Proceed</button>
               </div>
             </form>
           </div>

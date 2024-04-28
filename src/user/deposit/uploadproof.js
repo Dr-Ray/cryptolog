@@ -1,26 +1,47 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+// import uploadFile from '../../component/uploadfile'
+
 
 const UploadProof = () => {
+    const [filename, setFilename] = useState('');
+
+    const uploadFile = (e) => {
+        setFilename(e.target.files[0].name)
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        
+        console.log(e)
+    }
+    
     return (
         <>
-            <section class="container roww">
-                <div class="col l6 s12 offset-l3">
-                    <h4 class="center">Upload Payment Proof</h4><br/>
-                        <div class="cardd-panel center">
-                            <form enctype="multipart/form-data">
+            <section className="container roww">
+                <div className="col l6 s12 offset-l3">
+                    <h4 className="center">Upload Payment Proof</h4><br/>
+                        <div className="cardd-panel center">
+                            <form encType="multipart/form-data" onSubmit={handleSubmit}>
                                 <div>
-                                    <div class="file-field input-field">
-                                        <div class="btnn btnn-secondary">
-                                            <span>select proof</span>
-                                            <input type="file" accept=".jpg,.png,.jpeg" id="proof" name="proof" required="" />
+                                    <div className="file-field input-field">
+                                        <div className="btnn btnn-secondary">
+                                            <span>Select Proof</span>
+                                            <input 
+                                                type="file" 
+                                                accept=".jpg,.png,.jpeg" 
+                                                id="proof" 
+                                                name="proof" 
+                                                onChange={uploadFile}
+                                                required
+                                            />
                                         </div>
-                                        <div class="file-path-wrapper">
-                                            <input class="file-path validate" type="text" />
+                                        <div className="file-path-wrapper">
+                                            <input className="file-path validate" type="text" defaultValue={filename}/>
                                         </div>
                                     </div>
                                 </div>
-                                <div><button type="submit" class="btnn btnn-full">Submit</button></div>
+                                <div><button type="submit" className="btnn btnn-full">Submit</button></div>
                             </form>
                             <br />
                             <Link to="/user/deposits/list">My Deposits</Link>
