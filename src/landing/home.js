@@ -1,75 +1,18 @@
-import React, { useEffect, useRef } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom';
 import SwiperSlider from './swiper';
+import Trading1 from './component/trading1';
+import Trading2 from './component/trading2';
+import Trading3 from './component/trading3';
 
 
 const HomeLanding = () => {
-  const container = useRef();
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js";
-    script.type = "text/javascript";
-    script.async = true;
-    script.innerHTML = `
-          {
-              "symbols": [
-                  {
-                      "description": "BTC/USDT",
-                      "proName": "BINANCE:BTCUSDT"
-                    },
-                    {
-                      "description": "ETH/USDT",
-                      "proName": "BINANCE:ETHUSDT"
-                    },
-                    {
-                      "description": "SOL/USDT",
-                      "proName": "BINANCE:SOLUSDT"
-                    },
-                    {
-                      "description": "BNB/USDT",
-                      "proName": "BINANCE:BNBUSDT"
-                    },
-                    {
-                      "description": "DOGE/USDT",
-                      "proName": "BINANCE:DOGEUSDT"
-                    },
-                    {
-                      "description": "MATIC/USDT",
-                      "proName": "BINANCE:MATICUSDT"
-                    },
-                    {
-                      "description": "SHIB/USDT",
-                      "proName": "BINANCE:SHIBUSDT"
-                    },
-                    {
-                      "description": "GALA/USDT",
-                      "proName": "BINANCE:GALAUSDT"
-                    },
-                    {
-                      "description": "OP/USDT",
-                      "proName": "BINANCE:OPUSDT"
-                    },
-                    {
-                      "description": "DOT/USDT",
-                      "proName": "BINANCE:DOTUSDT"
-                    }
-                  ],
-                  "showSymbolLogo": true,
-                  "colorTheme": "dark",
-                  "isTransparent": false,
-                  "displayMode": "compact",
-                  "locale": "en"
-                }`;
-    container.current.appendChild(script);
-  }, []);
+
   return (
     <main>
 
-      <SwiperSlider/>
-
-      <div className="tradingview-widget-container" ref={container}>
-        <div className="tradingview-widget-container__widget"></div>
-      </div>
+      <SwiperSlider />
+      <Trading1 />
 
       <section className="py-5 in-cirro-7">
         <div className="container my-2">
@@ -141,7 +84,9 @@ const HomeLanding = () => {
               <p>View our impressive trading statistics and find out more about how we execute trading orders.</p>
             </div>
             <div className="col-md-12 col-lg-7">
-
+              <div class="row row-cols-1 row-cols-md-3 mt-1">
+                <Trading2 />
+              </div>
             </div>
             <div className="col-12 mt-5">
               <div className="row row-cols-1 row-cols-md-4 row-cols-lg-6 gx-5 gy-3 gy-lg-0">
@@ -261,6 +206,7 @@ const HomeLanding = () => {
               <p className="lead mb-4">Inform your decisions with timely dispatches from our team of global analysts.</p>
               <Link to="/login" className="btn btn-link"><i className="fas fa-arrow-right"></i>Find out more</Link>
             </div>
+            <Trading3 />
 
           </div>
         </div>
@@ -272,7 +218,7 @@ const HomeLanding = () => {
         <div className="container mt-3">
           <div className="row d-flex align-items-center gx-5 mb-3">
             <div className="col-md-12 col-lg-5">
-              <h1>Unlocking Financial Freedom: Your Path to a Debt-Free Future</h1>
+              <h1>Your Path to a Debt-Free Future</h1>
               <p className="lead mb-3">We believe that everyone deserves a chance to live a debt-free life, unburdened by financial stress. Whether you're an individual struggling with personal debt or a business seeking to eliminate financial liabilities, we have the tools and expertise to make it happen.</p>
               <ul className="fa-ul lh-lg">
                 <li><span className="fa-li"><i className="fas fa-check-square text-info"></i></span>Personalized Financial Solutions</li>
@@ -282,6 +228,7 @@ const HomeLanding = () => {
               </ul>
               <p className="small text-muted mt-3">Find out more about <Link to="/" className="link-info text-decoration-none">how we operate.</Link></p>
             </div>
+            
           </div>
         </div>
       </section>
@@ -433,10 +380,17 @@ const HomeLanding = () => {
 
         </div>
       </section>
-
-
       <br />
 
+      <div align="center">
+        <script src="https://price-static.crypto.com/latest/public/static/widget/index.js"></script>
+        <div
+          id="crypto-widget-CoinBlocks"
+          data-theme="dark"
+          data-design="classic"
+          data-coin-ids="1,166,382,1986,29">
+        </div>
+      </div>
 
       <section className="py-5 in-cirro-4">
         <div className="container">
@@ -478,6 +432,15 @@ const HomeLanding = () => {
             </div>
             <div className="col-md-12 col-lg-7 mt-md-5">
               <div className="card card-body ms-lg-5">
+                <iframe
+                  width="509"
+                  height="399"
+                  src="https://www.youtube.com/embed/-3gDltj-L3E"
+                  title="How to Buy Bitcoin on Crypto.com"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen>
+                </iframe>
               </div>
             </div>
           </div>
