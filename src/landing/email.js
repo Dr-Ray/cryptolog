@@ -1,20 +1,88 @@
 import React, { useContext, useState } from 'react'
 import { AuthContext } from '../context';
+import { InfinitySpin } from 'react-loader-spinner';
+import { ToastContainer, toast } from 'react-toastify';
 
 const EmailVerification = () => {
+  const [isLoading, setIsloading] = useState(false);
+  const [isLoading2, setIsloading2] = useState(false);
   const [pin, setPin] = useState('');
+  const [error, setError] = useState('');
   const { currentUser } = useContext(AuthContext);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
+    setIsloading(true)
 
-    console.log(e)
+    try {
+      let data = {
+        pin,
+        "id":currentUser.id
+      }
+
+      const resp = await fetch('http://localhost:4500/user/verify/email', {
+        method: "POST",
+        headers: {
+          "content-type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+      const response = await resp.json();
+      setTimeout(()=> {
+        setIsloading(false)
+      }, 2000)
+
+      if (response.status === 200) {
+        toast(response.message)
+
+      } else {
+        setTimeout(()=> {
+          setError(response.message)
+          toast(response.message)
+        }, 2100)
+        
+      }
+
+    } catch (err) {
+      setIsloading(false)
+      setError(err.message)
+    }
   }
 
-  const handleResend = (e) => {
+  const handleResend = async(e) => {
     e.preventDefault();
 
-    console.log(e)
+    setIsloading2(true);
+    try {
+      let data = {
+        email:currentUser.email
+      }
+
+      const resp = await fetch('http://localhost:4500/user/verification/resend-email', {
+        method: "POST",
+        headers: {
+          "content-type": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+      const response = await resp.json();
+      setTimeout(()=> {
+        setIsloading2(false)
+      }, 2000)
+
+      if (response.status === 200) {
+        toast(response.message)
+      } else {
+        setTimeout(()=> {
+          setError(response.message)
+          toast(response.message)
+        }, 2100)
+      }
+
+    } catch (err) {
+      setIsloading2(false)
+      setError(err.message)
+    }
   }
 
   return (
@@ -31,32 +99,65 @@ const EmailVerification = () => {
                     <div>
                       <div className="input-field">
                         <label className="active" htmlFor="pin">pin</label>
-                        <input 
+                        <input
                           type="number"
                           id="pin"
-                          min="00000001"
-                          max="99999999"
                           name="pin"
                           className=""
                           onChange={(e) => setPin(e.target.value)}
-                          required="" value={pin} />
+                          value={pin} 
+                          required
+                          />
                       </div>
                     </div>
                   </div>
-                  <div>
-                    <button type="submit" className="btnn btnn-full">VERIFY EMAIL</button>
-                  </div>
+
+                  {
+                    isLoading ? (
+                      <InfinitySpin
+                        visible={true}
+                        width="200"
+                        color="#4fa94d"
+                        ariaLabel="infinity-spin-loading"
+                      />
+                    ) : (
+                      <>
+                        <div>
+                          <button type="submit" className="btnn btnn-full">VERIFY EMAIL</button>
+                        </div>
+                      </>
+                    )
+                  }
+
                 </form><br /><br />
                 <form autoComplete="off" onSubmit={handleResend}>
                   <div className="roww">
                     <div className="input-field undefined">
-                      <input type="email" id="email" name="email" autoComplete="new-email" required="" value={currentUser.email} />
+                      <input type="email" id="email" name="email" autoComplete="new-email" required readOnly defaultValue={currentUser.email} />
                       <label className="active" htmlFor="email">email</label>
                     </div>
                   </div>
-                  <div><button type="submit" className="btnn btnn-full">RESEND PIN</button></div>
+
+                  {
+                    isLoading2 ? (
+                      <InfinitySpin
+                        visible={true}
+                        width="200"
+                        color="#4fa94d"
+                        ariaLabel="infinity-spin-loading"
+                      />
+                    ) : (
+                      <>
+                        <div><button type="submit" className="btnn btnn-full">RESEND PIN</button></div>
+
+                      </>
+                    )
+                  }
+
+                  
                 </form><br /><br />
               </center>
+              <ToastContainer />
             </div>
           </div>
         </div>

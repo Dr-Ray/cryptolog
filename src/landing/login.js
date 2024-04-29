@@ -12,7 +12,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsloading] = useState(false);
-
+ 
   const { setIsloggedIn, setCurrentUser } = useContext(AuthContext)
 
   const handleSubmit = async (e) => {

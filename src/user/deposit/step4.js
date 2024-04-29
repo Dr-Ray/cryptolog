@@ -21,7 +21,7 @@ const DepositStep4 = () => {
                 <div className="col l4 offset-l4 s12">
                     <div className="cardd-panel">
                         <p>SEND {Math.fround(depositDetails.data.amount/6500)} BTC</p>
-                        <p>TO THE WALLET ADDRESS BELOW OR SCAN THE QR CODE WITH YOUR <strong style={{fontWeight:"bold"}}>{depositDetails.data.paymethod.toUpperCase()}</strong> WALLET APP</p> 
+                        <p>TO THE WALLET ADDRESS BELOW OR SCAN THE QR CODE WITH YOUR <strong style={{fontWeight:"bold"}}>{depositDetails.data.Paytype.toUpperCase()}</strong> WALLET APP</p> 
                         <p></p>
                         <div className="input-field">
                             <CopyToClipboard text={copyText}

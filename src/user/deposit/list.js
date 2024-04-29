@@ -1,7 +1,27 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../../context';
 
 const DepositList = () => {
+  const { currentUser } = useContext(AuthContext);
+  const [deposts, setDeposits] = useState([])
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await fetch(`http://localhost:4500/user/deposits/fund/all`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json"
+        },
+        body: JSON.stringify({
+          depositor: currentUser.id
+        })
+      })
+      const response = await data.json();
+      console.log(response)
+      setDeposits(response)
+    }
+    fetchData();
+  }, [currentUser.id])
   return (
     <>
       <br />
@@ -13,21 +33,27 @@ const DepositList = () => {
           </li>
         </ul>
         <ul className="collection roww">
-          <li className="collection-item app-py-1 ">
-            <div className="roww app-list-link">
-              <Link to="/user/deposits/single">
-                <div className="col l1 s2" style={{ "padding": "0px" }}>
-                  <center>
-                    <p className="app-trading-month">APR</p><span className="app-trading-day">26</span>
-                  </center>
-                </div>
-                <div className="col l9 s7" style={{ "fontSize": "14px" }} >
-                  FUND $ {670.00}<br />TRADING BALANCE DEPOSIT
-                </div>
-              </Link>
-              <div className="col l2 s3" style={{ "textAlign": "right", "fontSize": "14px" }}>Pending</div>
-            </div>
-          </li >
+          {
+            deposts.map((item, index) => (
+              <>
+                <li className="collection-item app-py-1 ">
+                  <div className="roww app-list-link">
+                    <Link to={`/user/deposits/single/${item.id}`}>
+                      <div className="col l1 s2" style={{ "padding": "0px" }}>
+                        <center>
+                          <p className="app-trading-month">APR</p><span className="app-trading-day">26</span>
+                        </center>
+                      </div>
+                      <div className="col l9 s7" style={{ "fontSize": "14px" }} >
+                        FUND $ {item.amount}<br />TRADING BALANCE DEPOSIT
+                      </div>
+                    </Link>
+                    <div className="col l2 s3" style={{ "textAlign": "right", "fontSize": "14px" }}>{item.status}</div>
+                  </div>
+                </li >
+              </>
+            ))
+          }
         </ul >
       </div >
       <div className="fixed-action-btnn"><Link title="New Deposit" className="btnn-floating btnn-large" id="btnn" to="/user/deposits/fund/step1"><i className="large material-icons notranslate">add</i></Link>

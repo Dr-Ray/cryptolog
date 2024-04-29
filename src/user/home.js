@@ -23,11 +23,11 @@ const HomeDashboard = () => {
                         <div className="bg bg-secondary white-text dashboard-trading notranslate app-px-1 app-py-1" style={{ "background": "url('../assets/images/site/DashboardTrading.png')" }}>
                             <div className="roww center white-text">
                                 <div className="col l6 s6 app-py-1">
-                                    <h3 className="f-20 undefined white-text">${currentUser.trading_deposit}</h3>
+                                    <h3 className="f-20 undefined white-text">${currentUser.wallet_balance.trading_deposit}</h3>
                                     <span style={{ "fontSize": "11px" }}>DEPOSIT BALANCE</span>
                                 </div>
                                 <div className="col l6 s6 app-py-1">
-                                    <h3 className="f-20 undefined white-text">${currentUser.trading_profit}</h3><span style={{ "fontSize": "11px" }}>PROFIT BALANCE</span>
+                                    <h3 className="f-20 undefined white-text">${currentUser.wallet_balance.trading_profit}</h3><span style={{ "fontSize": "11px" }}>PROFIT BALANCE</span>
                                 </div>
                             </div><br />
                             <center>

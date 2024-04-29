@@ -122,7 +122,7 @@ function App() {
 								<Route path='/user/deposits/fund/step1' element={<DepositStep1 />} />
 								<Route path='/user/deposits/fund/step2/:amount/:account' element={<DepositStep2 />} />
 								<Route path='/user/deposits/fund/step3/:type/:amount/:account' element={<DepositStep3 />} />
-								<Route path='/user/deposits/fund/step4/:wallet_address' element={<DepositStep4 />} />
+								<Route path='/user/deposits/fund/step4/:wallet_address/:id' element={<DepositStep4 />} />
 								<Route path='/user/deposits/single' element={<DepositSingle />} />
 								<Route path='/user/deposits/list' element={<DepositList />} />
 								<Route path='/user/deposits/upload-proof/:id' element={<UploadProof />} />

@@ -1,27 +1,39 @@
 import React, { useContext, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { AuthContext } from '../../context';
+import { toast } from 'react-toastify';
 
 const DepositStep3 = () => {
-  const { setDepositDetails, depositDetails } = useContext (AuthContext);
-  // console.log(depositDetails)
-  const navigate = useNavigate();
-  const {amount} = useParams();
-  const [paymethod, setPaymethod] = useState('btc');
+  const { setDepositDetails, depositDetails, currentUser } = useContext(AuthContext);
 
-  const handleSubmit = () => {
+  const navigate = useNavigate();
+  const { amount } = useParams();
+  const [paytype, setPaytype] = useState('btc');
+
+  const handleSubmit = async () => {
     let data = {
-      paymethod,
+      paytype,
       amount,
-      wallet_address:"234c347chiurcercg83gwg6c8wecw8ewc",
-      id:Math.floor(Math.random()*10000)+1
+      wallet_address: "234c347chiurcercg83gwg6c8wecw8ewc",
+      payerid: currentUser.id,
+    }
+    setDepositDetails({ ...depositDetails, data })
+
+    const dd = await fetch('/user/deposits/fund/add', {
+      method: "POST",
+      body: data
+    })
+
+    const resp = await dd.json();
+    if (resp.status === 200) {
+      navigate(`/user/deposits/fund/step4/234c347chiurcercg83gwg6c8wecw8ewc/${resp.depositID}`)
+    } else {
+      toast(resp.message)
+      // send data to backend return true with wallet address
+      // navigate(`/user/deposits/fund/step4/234c347chiurcercg83gwg6c8wecw8ewc/${}`)
     }
 
-    console.log(data)
 
-    setDepositDetails({...depositDetails, data})
-    // send data to backend return true with wallet address
-    navigate(`/user/deposits/fund/step4/234c347chiurcercg83gwg6c8wecw8ewc`)
   }
   return (
     <>
@@ -33,14 +45,14 @@ const DepositStep3 = () => {
           <div className="col l4 offset-l4 s12">
             <div className="cardd-panel">
               <div>
-                <center>{amount/6500} BTC</center><br />
+                <center>{amount / 6500} BTC</center><br />
               </div>
               <form autoComplete="off" onSubmit={handleSubmit}>
                 <div className="roww">
                   <div className="input-field undefined">
                     <label className="active">Select Payment Method</label>
-                    <select id="wallet_id" className="browser-default app-my-2" defaultValue={paymethod}
-                      onChange={(e) => setPaymethod(e.target.value)}>
+                    <select id="wallet_id" className="browser-default app-my-2" defaultValue={paytype}
+                      onChange={(e) => setPaytype(e.target.value)}>
                       <option value="btc" selected>Bitcoin (BTC)</option>
                       <option value="eth">Ethereum (ETHErc20)</option>
                       <option value="usdt-erc20">USDT (ERC20)</option>
