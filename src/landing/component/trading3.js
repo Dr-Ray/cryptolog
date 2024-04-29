@@ -4,10 +4,12 @@ const Trading3 = () => {
     const container = useRef();
     useEffect(() => {
         const script = document.createElement("script");
+        const script2 = document.createElement("script");
+
         script.src = "https://s3.tradingview.com/tv.js";
-        script.type = "text/javascript";
-        script.async = true;
-        script.innerHTML = `
+        script2.type = "text/javascript";
+        script2.async = true;
+        script2.innerHTML = `
         new TradingView.MediumWidget(
             {
                 "symbols": [
@@ -38,13 +40,12 @@ const Trading3 = () => {
         );
         `;
         container.current.appendChild(script);
+        container.current.appendChild(script2);
     }, []);
     return (
         <div class="col-md-12 col-lg-7 mt-3 mt-lg-0">
-            <div class="card card-body ms-lg-5">
-                <div className="tradingview-widget-container" ref={container}>
-                    <div id="tradingview-widget"></div>
-                </div>
+            <div class="card card-body ms-lg-5" ref={container}>
+                <div id="tradingview-widget"></div>
             </div>
         </div>
         

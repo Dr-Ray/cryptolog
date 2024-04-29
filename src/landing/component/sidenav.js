@@ -22,6 +22,14 @@ const SideNavLanding = ({openNav, setopenNav}) => {
                                         <span className="material-icons notranslate">home</span>
                                         <span style={{ "paddingLeft": "10px" }}>Home</span>
                                     </Link></li>
+                                    <li><Link className="sidenav-close" to="/login">
+                                        <span className="material-icons notranslate">person_outline</span>
+                                        <span style={{ "paddingLeft": "10px" }}>Sign In</span>
+                                    </Link></li>
+                                    <li><Link className="sidenav-close" to="/register">
+                                        <span className="material-icons notranslate">person_add</span>
+                                        <span style={{ "paddingLeft": "10px" }}>Signup</span>
+                                    </Link></li>
                                     <li><Link className="sidenavv-close" to="/about">
                                         <span className="material-icons notranslate">account_circle</span>
                                         <span style={{ "paddingLeft": "10px" }}>About</span>

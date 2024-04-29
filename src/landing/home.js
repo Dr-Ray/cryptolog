@@ -16,28 +16,6 @@ const HomeLanding = () => {
 
       <section className="py-5 in-cirro-7">
         <div className="container my-2">
-          <div className="row d-flex justify-content-center">
-            <div className="col-md-12 col-lg-10 mt-1">
-              <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 gy-2 g-md-2 gx-lg-2 text-center">
-                <div className="col">
-                  <img src="img/in-cirro-2-icon-1.svg" alt="icon" width="64" height="64" />
-                  <h6 className="fw-bold mt-2">Wide Range of Trading Instruments</h6>
-                </div>
-                <div className="col">
-                  <img src="img/in-cirro-2-icon-2.svg" alt="icon" width="64" height="64" />
-                  <h6 className="fw-bold mt-2">Unparalleled Trading Conditions</h6>
-                </div>
-                <div className="col">
-                  <img src="img/in-cirro-2-icon-3.svg" alt="icon" width="64" height="64" />
-                  <h6 className="fw-bold mt-2">Globally Licensed & Regulated</h6>
-                </div>
-                <div className="col">
-                  <img src="img/in-cirro-2-icon-4.svg" alt="icon" width="64" height="64" />
-                  <h6 className="fw-bold mt-2">Committed to Forex Education</h6>
-                </div>
-              </div>
-            </div>
-          </div>
           <div className="row mt-5">
             <div className="col-md-12 col-lg-5">
               <h1 className="mb-3">Build a Better Future with SignalBlaze</h1>
@@ -69,7 +47,20 @@ const HomeLanding = () => {
                 </div>
               </div>
             </div>
-
+            <div class="col-md-12 col-lg-7 position-relative">
+              <img class="w-100 mt-3 mt-lg-0" src="img/in-cirro-7-map.svg" alt="map" />
+              <span class="position-absolute dot-pulse one" style={{ "left": "20%", "top": "42%" }}></span>
+              <span class="position-absolute dot-pulse two" style={{ "left": "22%", "top": "32%" }}></span>
+              <span class="position-absolute dot-pulse one" style={{ "left": "30%", "top": "30%" }}></span>
+              <span class="position-absolute dot-pulse one" style={{ "left": "44%", "top": "27%" }}></span>
+              <span class="position-absolute dot-pulse one" style={{ "left": "50%", "top": "30%" }}></span>
+              <span class="position-absolute dot-pulse two" style={{ "left": "66%", "top": "47%" }}></span>
+              <span class="position-absolute dot-pulse two" style={{ "left": "55%", "top": "38%" }}></span>
+              <span class="position-absolute dot-pulse two" style={{ "left": "72%", "top": "53%" }}></span>
+              <span class="position-absolute dot-pulse one" style={{ "left": "82%", "top": "35%" }}></span>
+              <span class="position-absolute dot-pulse two" style={{ "left": "76%", "top": "43%" }}></span>
+              <span class="position-absolute dot-pulse one" style={{ "left": "85%", "top": "72%" }}></span>
+            </div>
           </div>
         </div>
       </section>
@@ -196,7 +187,6 @@ const HomeLanding = () => {
         </div>
       </section>
 
-
       <section className="py-5 in-cirro-3">
         <div className="container">
           <div className="row d-flex align-items-center gx-5 mb-3">
@@ -206,19 +196,61 @@ const HomeLanding = () => {
               <p className="lead mb-4">Inform your decisions with timely dispatches from our team of global analysts.</p>
               <Link to="/login" className="btn btn-link"><i className="fas fa-arrow-right"></i>Find out more</Link>
             </div>
-            <Trading3 />
+            <div class="col-md-12 col-lg-7 mt-md-5">
+              <div class="card card-body ms-lg-5">
+                <div style={{
+                  "height": "433px",
+                  "backgroundColor": "#1D2330",
+                  "overflow": "hidden",
+                  "boxSizing": "border-box",
+                  "border": "1px solid #282E3B",
+                  "borderRadius": "4px",
+                  "textAlign": "right",
+                  "lineHeight": "14px",
+                  "fontSize": "12px",
+                  "fontFeatureSettings": "normal",
+                  "textSize-adjust": "100%",
+                  "boxShadow": "inset 0 -20px 0 0 #262B38",
+                  "padding": "0px",
+                  "margin": "0px",
+                  "width": "100%"
+                }}>
+                  <div style={{ "height": "413px", "padding": "0px", "margin": "0px", "width": "100%" }}>
+                    <iframe
+                      title='q' src="https://widget.coinlib.io/widget?type=full_v2&theme=dark&cnt=15&pref_coin_id=1505&graph=yes"
+                      width="100%"
+                      height="100%"
+                      scrolling="auto"
+                      marginwidth="0"
+                      marginheight="0"
+                      frameborder="0"
+                      border="0"
+                      style={{ "border": "0", "margin": "0", "padding": "0" }}></iframe>
+                  </div>
+                  <div style={{
+                    "color": "#626B7F",
+                    "lineHeight": "14px",
+                    "fontWeight": "400",
+                    "fontSize": "11px",
+                    "boxSizing": "border-box",
+                    "padding": "2px 6px",
+                    "width": "100%",
+                    "fontFamily": "Verdana, Tahoma, Arial, sans-serif"
+                  }}>
+                  </div>
+                </div>
+              </div>
+            </div>
 
           </div>
         </div>
       </section>
 
-
-
       <section className="py-5 in-cirro-13">
         <div className="container mt-3">
           <div className="row d-flex align-items-center gx-5 mb-3">
             <div className="col-md-12 col-lg-5">
-              <h1>Your Path to a Debt-Free Future</h1>
+              <h1>Unlocking Financial Freedom: Your Path to a Debt-Free Future</h1>
               <p className="lead mb-3">We believe that everyone deserves a chance to live a debt-free life, unburdened by financial stress. Whether you're an individual struggling with personal debt or a business seeking to eliminate financial liabilities, we have the tools and expertise to make it happen.</p>
               <ul className="fa-ul lh-lg">
                 <li><span className="fa-li"><i className="fas fa-check-square text-info"></i></span>Personalized Financial Solutions</li>
@@ -228,11 +260,14 @@ const HomeLanding = () => {
               </ul>
               <p className="small text-muted mt-3">Find out more about <Link to="/" className="link-info text-decoration-none">how we operate.</Link></p>
             </div>
-            
+            <div class="col-md-12 col-lg-7 mt-3 mt-lg-0">
+              <div class="card card-body ms-lg-5">
+                <iframe title="symbol overview TradingView widget" lang="en" id="tradingview_b1a25" frameborder="0" allowtransparency="true" scrolling="no" src="https://s.tradingview.com/embed-widget/symbol-overview/?locale=en#%7B%22symbols%22%3A%5B%5B%22BTC%7C1Y%22%5D%5D%2C%22width%22%3A%22100%25%22%2C%22height%22%3A%22387px%22%2C%22colorTheme%22%3A%22light%22%2C%22gridLineColor%22%3A%22rgba(42%2C%2046%2C%2057%2C%200)%22%2C%22fontColor%22%3A%22%23787b86%22%2C%22scalePosition%22%3A%22no%22%2C%22scaleMode%22%3A%22Normal%22%2C%22chartType%22%3A%22area%22%2C%22lineColor%22%3A%22%232962ff%22%2C%22topColor%22%3A%22rgba(41%2C%2098%2C%20255%2C%200.3)%22%2C%22bottomColor%22%3A%22rgba(41%2C%2098%2C%20255%2C%200)%22%2C%22fontFamily%22%3A%22Trebuchet%20MS%2C%20sans-serif%22%2C%22isTransparent%22%3Atrue%2C%22showFloatingTooltip%22%3Atrue%2C%22page-uri%22%3A%22www.cexafm.com%2Fen%2F%22%2C%22utm_source%22%3A%22www.cexafm.com%22%2C%22utm_medium%22%3A%22widget%22%2C%22utm_campaign%22%3A%22symbol-overview%22%7D" style={{ "margin": "0px !important", "padding": "0px !important", "width": "100%", "height": "387px" }}></iframe>
+              </div>
+            </div>
           </div>
         </div>
       </section>
-
 
       <section className="py-5 bg-primary text-white in-cirro-8">
         <div className="container my-2">
@@ -274,8 +309,6 @@ const HomeLanding = () => {
           </div>
         </div>
       </section>
-
-
 
       <section className="py-5 in-cirro-6">
         <div className="container">
@@ -392,7 +425,7 @@ const HomeLanding = () => {
         </div>
       </div>
 
-      <section className="py-5 in-cirro-4">
+      {/* <section className="py-5 in-cirro-4">
         <div className="container">
           <div className="row">
             <div className="col-12">
@@ -417,9 +450,7 @@ const HomeLanding = () => {
             </div>
           </div>
         </div>
-      </section>
-
-
+      </section> */}
 
       <section className="py-5 in-cirro-3">
         <div className="container">
@@ -479,9 +510,6 @@ const HomeLanding = () => {
 
         </div>
       </section>
-
-
-
 
       <div align="center">
         <h1 className="uk-margin-remove">Choose your <span className="in-highlight">account</span> type</h1>
@@ -548,10 +576,7 @@ const HomeLanding = () => {
         <Link to="/" className="btn btn-info">See other plans<i className="fas fa-arrow-right ms-1"></i></Link>
       </div>
 
-
       <br />
-
-
 
       <section className="pt-2 mb-n3">
         <div align="center">
@@ -597,9 +622,6 @@ const HomeLanding = () => {
           </div>
         </div>
       </section>
-
-
-
 
       <section className="py-5 in-cirro-14" style={{ background: " url(img/in-cirro-14-background.png) no-repeat bottom, linear-gradient(0deg, #F5F7F9 50%, #fff 100%)" }}>
         <div className="container my-2">
