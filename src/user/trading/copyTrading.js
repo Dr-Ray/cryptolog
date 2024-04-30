@@ -1,7 +1,19 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../../context';
 
 const CopyTrading = () => {
+    const { currentUser } = useContext(AuthContext);
+    const [traders, setTraders] = useState([])
+    useEffect(() => {
+        async function fetchData() {
+
+            const response = await fetch(`http://localhost:4500/user/traders/all`);
+            const resp = await response.json();
+            setTraders(resp);
+        }
+        fetchData();
+    }, [])
     return (
         <>
             <div className="container">
@@ -12,38 +24,58 @@ const CopyTrading = () => {
                     </div>
                 </form>
                 <ul className="collection roww">
-                    <li className="collection-item app-mb-2" style={{"padding": "0px"}}>
-                        <div className="roww app-link-list">
-                            <div className="col s3 l1 app-trader-border-image">
-                                <center>
-                                    <img className="circle" src="/uploads/images/trader-143-1713211310.png" style={{"maxWidth": "70px", "maxHeight": "70px"}} alt=''/><br />
-                                    <button className="green btnn btnn-full" style={{"fontSize": "10px"}}>COPY</button>
-                                </center>
-                            </div>
-                            <Link to="/user/traders/143">
-                                <div className="col s9 l5 app-trader-border-name">
-                                    <h3>Kyren</h3>
-                                    <p></p>
-                                </div>
-                                <div className="col s4 l2 center app-trader-border">
-                                    <h3>97.47%</h3>Return Rate
-                                </div>
-                                <div className="col s4 l2 center app-trader-border">
-                                    <h3>3530</h3>Followers
-                                </div>
-                                <div className="col s4 l2 center app-trader-border">
-                                    <h3>0</h3>Minimum
-                                </div>
-                            </Link>
-                        </div>
-                    </li>
+                    {
+                        traders.map((trader, index) => (
+                            <>
+                                <li className="collection-item app-mb-2" style={{ "padding": "0px" }}>
+                                    <div className="roww app-link-list">
+                                        <div className="col s3 l1 app-trader-border-image">
+                                            <center>
+                                                <img className="circle" src={`/uploads/images/traders/${trader.image}`} style={{ "maxWidth": "70px", "maxHeight": "70px" }} alt='' /><br />
+                                                {
+                                                    trader.copytrader.accepted ? (
+                                                        <>
+                                                            <button className="green btnn btnn-full" style={{ "fontSize": "10px" }}>Accepted</button>
+                                                        </>
+                                                    ) : (
+                                                        
+                                                        <>
+                                                            {(trader.copytrader.copier_id === currentUser.id) ? (
+                                                                <>
+                                                                    <button className="green btnn btnn-full" style={{ "fontSize": "10px" }}>Requested</button>
+                                                                </>
+                                                            ) : (
+                                                                <>
+                                                                    <button className="green btnn btnn-full" style={{ "fontSize": "10px" }}>Copy</button>
+                                                                </>
+                                                            )}
+                                                        </>
+                                                )
+                                                }
+                                            </center>
+                                        </div>
+                                        <Link to={`/user/traders/${trader.id}`}>
+                                            <div className="col s9 l5 app-trader-border-name">
+                                                <h3>{trader.name}</h3>
+                                                <p>{trader.bio}</p>
+                                            </div>
+                                            <div className="col s4 l2 center app-trader-border">
+                                                <h3>{trader.win_percent}%</h3>Return Rate
+                                            </div>
+                                            <div className="col s4 l2 center app-trader-border">
+                                                <h3>{trader.followers}</h3>Followers
+                                            </div>
+                                            <div className="col s4 l2 center app-trader-border">
+                                                <h3>0</h3>Minimum
+                                            </div>
+                                        </Link>
+                                    </div>
+                                </li>
+                            </>
+                        ))
+                    }
                 </ul>
-                <center>
-                    <ul style={{ "display": "inline-block" }}>
-                        <li className="pagination-text">(1 / 2)</li>
-                    </ul>
-                    <div style={{ "display": "inline-block" }}><i className="material-icons notranslate pagination-button">chevron_right</i></div>
-                </center><br />
+                <br />
                 <center><Link to="/pages/copy-trading-agreement">Copy Trading Agreement</Link></center>
             </div>
         </>

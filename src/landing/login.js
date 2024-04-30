@@ -12,7 +12,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsloading] = useState(false);
- 
+
   const { setIsloggedIn, setCurrentUser } = useContext(AuthContext)
 
   const handleSubmit = async (e) => {
@@ -32,7 +32,7 @@ const Login = () => {
         body: JSON.stringify(data)
       });
       const response = await resp.json();
-      setTimeout(()=> {
+      setTimeout(() => {
         setIsloading(false)
       }, 2000)
 
@@ -41,11 +41,11 @@ const Login = () => {
         setCurrentUser(response.user)
         navigate('/user')
       } else {
-        setTimeout(()=> {
+        setTimeout(() => {
           setError(response.message)
           toast(response.message)
         }, 2100)
-        
+
       }
 
     } catch (err) {
@@ -65,13 +65,7 @@ const Login = () => {
                   <Link to="/" className="text-center d-block mb-3 mb-sm-4 auth-page-logo">
                     <img src="/img/logog.png" alt="logo" />
                   </Link>
-                  {/* {
-                    error && (
-                      <div className="red black-text lighten-4 card-panel text-center" style={{ "padding": "30px" }}>
-                        <span>{error}</span><br />
-                      </div>
-                    )
-                  } */}
+
                   <ToastContainer />
                   <form className="verify-gcaptcha account-form" onSubmit={handleSubmit}>
                     <input type="hidden" name="_token" value="i0O64BYKigXcwBjLJG8tTEX1NnLS3ClnmgLC1LjH" />
@@ -105,7 +99,7 @@ const Login = () => {
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
-                          />
+                          /> 
                         </div>
                       </div>
                       <div className="col-12">
@@ -133,9 +127,16 @@ const Login = () => {
                             <div className="col-12">
                               <button type="submit" className="btn btn-primary w-100">Login Account</button>
                             </div><br /><br />
+                            <br /><br />
+                            {
+                              error && (
+                                <div className="red black-text lighten-4 card-panel text-center" style={{ "padding": "30px" }}><span>{error}</span><br /></div>
+                              )
+                            }
                           </>
                         )
                       }
+
 
                       <div className="col-12 mt-4">
                         <p className="text-center">Don't have any account?

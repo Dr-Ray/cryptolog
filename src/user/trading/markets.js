@@ -73,7 +73,7 @@ const UserMarkets = () => {
         <ul className="collection roww">
           {
             gen?.map((data, index)=>(
-              <IndexPrices data={data}  key={index}/>
+              <IndexPrices data={data} key={index} addToWish={true}/>
             ))
           }
         </ul><br /><br /><br /><br />

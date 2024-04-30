@@ -46,7 +46,7 @@ const RegisterationHome = () => {
         body: JSON.stringify(data)
       });
       const response = await resp.json();
-      setTimeout(()=> {
+      setTimeout(() => {
         setIsloading(false)
       }, 2000)
       setCurrentUser(response.user)
@@ -730,15 +730,16 @@ const RegisterationHome = () => {
                             <div className="col-12">
                               <button type="submit" className="btn btn-primary w-100">Create Account</button>
                             </div><br /><br />
+                            <br /><br />
+                            {
+                              error && (
+                                <div className="red black-text lighten-4 card-panel text-center" style={{ "padding": "30px" }}><span>{error}</span><br /></div>
+                              )
+                            }
                           </>
                         )
                       }
-                      <br />
-                      {
-                        error && (
-                          <div className="red black-text lighten-4 card-panel text-center" style={{ "padding": "30px" }}><span>{error}</span><br /></div>
-                        )
-                      }
+
                       <div className="col-12 mt-4">
                         <p className="text-center">
                           Already have an account? <Link to="/login" className="fw-bold text--base">Login Account</Link>

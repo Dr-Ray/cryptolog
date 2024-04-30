@@ -1,43 +1,92 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { AuthContext } from '../../context';
+import { InfinitySpin } from 'react-loader-spinner';
+import { toast } from 'react-toastify';
 
 const AddressUpdate = () => {
     const { currentUser } = useContext(AuthContext);
+    const [email, setEmail] = useState(currentUser.email);
+    const [country, setCountry] = useState(currentUser.country);
+    const [mobile, setMobile] = useState(currentUser.mobile);
+    const [state, setState] = useState(currentUser.state);
+    const [city, setCity] = useState(currentUser.city);
+    const [isLoading, setIsloading] = useState(false);
+    const [error, setError] = useState('');
+
+    const HandleUpdate = async (e) => {
+        e.preventDefault();
+        setIsloading(true)
+        try {
+            let data = {
+                email,
+                "country": `${country}`,
+                "phone": `${mobile}`,
+                state,
+                city
+            }
+
+            const resp = await fetch('http://localhost:4500/user/account/update/user', {
+                method: "POST",
+                headers: {
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
+            const response = await resp.json();
+            setTimeout(() => {
+                setIsloading(false)
+            }, 2000)
+            if (response.status === 200) {
+                toast('account updated successfully')
+            } else {
+                setError(response.message)
+            }
+
+        } catch (err) {
+            setIsloading(false);
+            setError(err.message);
+        }
+    }
     return (
         <>
             <div className="roww"><br /><br />
                 <div className="col l6 offset-l3 s12">
                     <div className="cardd-panel">
                         <center>
-                            <form autocomplete="off">
+                            <form autocomplete="off" onSubmit={HandleUpdate}>
                                 <div className="roww">
                                     <div>
                                         <div className="input-field undefined">
-                                            <input type="text" id="email_address" name="email" maxlength="300" inputMode="text" required="" value={currentUser.email} />
+                                            <input type="text" id="email_address" name="email" maxlength="300" inputMode="text" required="" value={email}
+                                                onChange={(e) => setEmail(e.target.value)} />
                                             <label className="active" htmlFor="email_address">email address</label>
                                         </div>
                                     </div>
                                     <div>
                                         <div className="input-field undefined">
-                                            <input type="text" id="phone" name="phone" maxlength="300" inputMode="text" required="" value={currentUser.phone} />
+                                            <input type="text" id="phone" name="phone" maxlength="300" inputMode="text" required="" value={mobile}
+                                                onChange={(e) => setMobile(e.target.value)} />
                                             <label className="active" htmlFor="phone">Mobile number</label>
                                         </div>
                                     </div>
                                     <div>
                                         <div className="input-field undefined">
-                                            <input type="text" id="city" name="city" maxlength="300" inputMode="text" required="" value={currentUser.city} />
+                                            <input type="text" id="city" name="city" maxlength="300" inputMode="text" required="" value={city}
+                                                onChange={(e) => setCity(e.target.value)} />
                                             <label className="active" htmlFor="city">city</label>
                                         </div>
                                     </div>
                                     <div>
                                         <div className="input-field undefined">
-                                            <input type="text" id="state" name="state" maxlength="300" inputMode="text" required="" value={currentUser.state} />
+                                            <input type="text" id="state" name="state" maxlength="300" inputMode="text" required="" value={state}
+                                                onChange={(e) => setState(e.target.value)} />
                                             <label className="active" htmlFor="state">state</label>
                                         </div>
                                     </div>
                                     <div className="input-field undefined">
                                         <label className="active">country</label>
-                                        <select id="country" className="browser-default undefined">
+                                        <select id="country" className="browser-default undefined" value={country}
+                                            onChange={(e) => setCountry(e.target.value)}>
                                             <option value="Afghanistan">Afghanistan</option>
                                             <option value="Albania">Albania</option>
                                             <option value="Algeria">Algeria</option>
@@ -291,7 +340,27 @@ const AddressUpdate = () => {
                                         </select>
                                     </div>
                                 </div>
-                                <div><button type="submit" className="btnn btnn-full">Update</button></div>
+                                {
+                                    isLoading ? (
+                                        <InfinitySpin
+                                            visible={true}
+                                            width="200"
+                                            color="#4fa94d"
+                                            ariaLabel="infinity-spin-loading"
+                                        />
+                                    ) : (
+                                        <>
+
+                                            <div><button type="submit" className="btnn btnn-full">Update</button></div><br /><br />
+                                            <br /><br />
+                                            {
+                                                error && (
+                                                    <div className="red black-text lighten-4 card-panel text-center" style={{ "padding": "30px" }}><span>{error}</span><br /></div>
+                                                )
+                                            }
+                                        </>
+                                    )
+                                }
                             </form>
                         </center>
                     </div>

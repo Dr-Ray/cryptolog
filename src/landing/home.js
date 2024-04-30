@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import SwiperSlider from './swiper';
 import Trading1 from './component/trading1';
 import Trading2 from './component/trading2';
-import Trading3 from './component/trading3';
-
 
 const HomeLanding = () => {
 

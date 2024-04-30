@@ -3,18 +3,11 @@ import '../dashboard.css';
 import { Link } from 'react-router-dom';
 import BottomNav from '../component/bottomnav';
 import { AuthContext } from '../context';
-import { useEffect } from 'react';
+import UserWatchList from './trading/watchlist';
 
 const HomeDashboard = () => {
     const { currentUser } = useContext(AuthContext);
-    // useEffect( () => {
-    //     async function fetchData() {
-            
-    //         const response =  await fetch(`http://localhost:4500/profile`);
-    //         console.log()
-    //       }
-    //       fetchData();
-    // }, [])
+
     return (
         <>
             <section className="container">
@@ -76,58 +69,7 @@ const HomeDashboard = () => {
                         </div>
                     </div>
                     <div className="col l8 s12"><br />
-                        <div>
-                            <ul className="collection">
-                                <li className="collection-item app-py-1">
-                                    <div className="roww">
-                                        <div className="col s2">
-                                            <center>
-                                                <img src="https://s3-symbol-logo.tradingview.com/indices/nasdaq-100--big.svg" className="ticon" alt='' />
-                                            </center>
-                                        </div>
-                                        <div className="col s4">US Nas 100<br />
-                                            <span style={{ "fontSize": "12px" }}>NAS100USD</span>
-                                        </div>
-                                        <div className="col s4" style={{ "paddingTop": "10px" }}>17561.25</div>
-                                        <div className="col s2" style={{ "paddingTop": "10px" }}>
-                                            <span className="material-icons notranslate btnn-color">star</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li className="collection-item app-py-1">
-                                    <div className="roww">
-                                        <div className="col s2">
-                                            <center>
-                                                <img src="https://s3-symbol-logo.tradingview.com/indices/dow-30--big.svg" className="ticon" alt='' />
-                                            </center>
-                                        </div>
-                                        <div className="col s4">US Wall St 30<br />
-                                            <span style={{ "fontSize": "12px" }}>US30USD</span>
-                                        </div>
-                                        <div className="col s4" style={{ "paddingTop": "10px" }}>38457.55</div>
-                                        <div className="col s2" style={{ "paddingTop": "10px" }}>
-                                            <span className="material-icons notranslate btnn-color">star</span>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li className="collection-item app-py-1">
-                                    <div className="roww">
-                                        <div className="col s2">
-                                            <center>
-                                                <img src="https://s3-symbol-logo.tradingview.com/crypto/XTVCXRP--big.svg" className="ticon" alt='' />
-                                            </center>
-                                        </div>
-                                        <div className="col s4">Ripple<br />
-                                            <span style={{ "fontSize": "12px" }}>XRPUSD</span>
-                                        </div>
-                                        <div className="col s4" style={{ "paddingTop": "10px" }}>0.50482</div>
-                                        <div className="col s2" style={{ "paddingTop": "10px" }}>
-                                            <span className="material-icons notranslate btnn-color">star</span>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul><br /><br />
-                        </div>
+                        <UserWatchList />
                     </div>
                 </div>
             </section>
